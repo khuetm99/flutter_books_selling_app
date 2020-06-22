@@ -144,6 +144,8 @@ class _HomePageState extends State<HomePage> {
           AssetImage('images/c2.png'),
           AssetImage('images/c3.jpg'),
           AssetImage('images/c4.jpg'),
+          AssetImage('images/c3.jpg'),
+          AssetImage('images/c4.jpg'),
         ],
         autoplay: false,
         animationCurve: Curves.fastOutSlowIn,

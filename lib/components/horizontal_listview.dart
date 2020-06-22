@@ -24,7 +24,13 @@ class HorizontalList extends StatelessWidget {
             image_location: 'images/a1.png',
             image_caption: 'category',),
 
+          Category(
+            image_location: 'images/a1.png',
+            image_caption: 'category',),
 
+          Category(
+            image_location: 'images/a1.png',
+            image_caption: 'category',),
         ],
       ),
     );
