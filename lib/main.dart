@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'components/horizontal_listview.dart';
+import 'components/horizontal_listview.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blue,
         title: Text('BookApp'),
         actions: <Widget>[
           new IconButton(
@@ -120,7 +121,6 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           image_carousel,
-
           // padding widget
           new Padding(
             padding: const EdgeInsets.all(8.0),
@@ -129,6 +129,27 @@ class _HomePageState extends State<HomePage> {
 
           // Horizontal ListView
           HorizontalList(),
+
+          //Content
+          new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Most Purchased Book'),
+          ),
+          MostPurchasedProduct(),
+
+          //New Book
+          new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('New Book'),
+          ),
+          NewBook(),
+
+          //Flash Sale
+          new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Flash Sale'),
+          ),
+          FlashSale(),
         ],
       ),
     );
@@ -144,9 +165,9 @@ class _HomePageState extends State<HomePage> {
           AssetImage('images/c3.jpg'),
           AssetImage('images/c4.jpg'),
         ],
-        autoplay: false,
+        autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 1000),
+        animationDuration: Duration(milliseconds: 3000),
         dotSize: 4.0,
         indicatorBgPadding: 6.0,
       ));
