@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'components/horizontal_listview.dart';
 import 'components/horizontal_listview.dart';
+import 'components/products.dart';
+
 
 void main() {
   runApp(new MaterialApp(
@@ -124,18 +126,25 @@ class _HomePageState extends State<HomePage> {
           // padding widget
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Category'),
+            child: Text('Danh mục'),
           ),
 
           // Horizontal ListView
           HorizontalList(),
 
-          //Content
+          //Sách nổi bật
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Most Purchased Book'),
+            child: Text('Sách nổi bật',style: TextStyle(fontSize: 20),),
           ),
-          MostPurchasedProduct(),
+          Products(),
+
+//            Sách mới
+          new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Sách mới',style: TextStyle(fontSize: 20),),
+          ),
+          FlashSale(),
 
           //New Book
           new Padding(
@@ -145,11 +154,7 @@ class _HomePageState extends State<HomePage> {
           NewBook(),
 
           //Flash Sale
-          new Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Flash Sale'),
-          ),
-          FlashSale(),
+
         ],
       ),
     );

@@ -80,7 +80,8 @@ class MostPurchasedProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150.0,
+      height: 200.0,
+      width: 150,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
