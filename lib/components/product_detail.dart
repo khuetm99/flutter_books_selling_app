@@ -173,13 +173,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                   textColor: Colors.white,
                   elevation: 0.2,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(width: 75,),
-                      new Text(
+                      Text(
                         'Thêm vào giỏ hàng ',
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      Icon(Icons.add_shopping_cart, color: Colors.white,)
+                      Icon(Icons.add_shopping_cart, color: Colors.white,),
                     ],
                   ),
               ),
