@@ -17,14 +17,14 @@ class _ProductsState extends State<Products> {
     },
     {
       "ten": "Đắc nhân tâm",
-      "tacgia": "",
+      "tacgia": "Dale Carnegie",
       "picture": "images/products/p2.jpg",
       "gia_cu": 120000,
       "gia": 100000,
     },
     {
-      "ten": "Đắc nhân tâm",
-      "tacgia": "",
+      "ten": "Đắc nhân tâm ",
+      "tacgia": "Dale Carnegie",
       "picture": "images/products/p2.jpg",
       "gia_cu": 120000,
       "gia": 100000,
@@ -137,7 +137,7 @@ class Single_prod extends StatelessWidget {
               SizedBox(
                 height: 12,
               ),
-              Text("$product_gia",
+              Text("${product_giacu}",
                   style: TextStyle(
                       fontSize: 13,
                       color: Colors.black,

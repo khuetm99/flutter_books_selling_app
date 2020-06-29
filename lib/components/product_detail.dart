@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
+import 'package:flutterbooksellingapp/main.dart';
+import 'package:flutterbooksellingapp/components/products.dart';
 
 class ProductDetails extends StatefulWidget {
   final product_detail_ten;
@@ -29,7 +31,9 @@ class _ProductDetailsState extends State<ProductDetails> {
         elevation: 0.0,
         centerTitle: true,
         backgroundColor: Colors.green[700],
-        title: Text('BookApp'),
+        title: InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage())),
+            child: Text('BookApp')),
         actions: <Widget>[
           new IconButton(
               icon: Icon(
@@ -105,7 +109,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Expanded(
                         child: Text(
-                      '${widget.product_detail_gia}VND',
+                      '${widget.product_detail_gia}',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -124,7 +128,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 Text(
                   widget.product_detail_tacgia,
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17),
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 17),
                   textAlign: TextAlign.left,
                   textDirection: TextDirection.ltr,
                 ),
@@ -163,14 +167,22 @@ class _ProductDetailsState extends State<ProductDetails> {
             //==========Size Button=======/
             Expanded(
               child: MaterialButton(
+                padding: EdgeInsets.all(10),
                   onPressed: () {},
                   color: Colors.redAccent,
                   textColor: Colors.white,
                   elevation: 0.2,
-                  child: new Text(
-                    'Thêm vào giỏ hàng ',
-                    style: TextStyle(color: Colors.white),
-                  )),
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(width: 75,),
+                      new Text(
+                        'Thêm vào giỏ hàng ',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      Icon(Icons.add_shopping_cart, color: Colors.white,)
+                    ],
+                  ),
+              ),
             )
           ],
         ),
@@ -233,7 +245,80 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Text("Name",style: TextStyle(fontSize: 14),),)
           ],
         ),
+        Divider(),
+//        ===========Sản phẩm gợi ý ===========
+        Row(
+          children: <Widget>[
+            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child : Text(' Gợi ý sách ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
+          ],
+        ),
+        Container(
+          height: 380.0,
+          child: SimilarProducts(),
+        )
+
       ]),
     );
   }
 }
+
+class SimilarProducts extends StatefulWidget {
+  @override
+  _SimilarProductsState createState() => _SimilarProductsState();
+}
+
+class _SimilarProductsState extends State<SimilarProducts> {
+  var product_list = [
+    {
+      "ten": "Bố Già",
+      "tacgia": "Mario puzo",
+      "picture": "images/products/p1.jpg",
+      "gia_cu": 120000,
+      "gia": 100000,
+    },
+    {
+      "ten": "Đắc nhân tâm",
+      "tacgia": "Dale Carnegie",
+      "picture": "images/products/p2.jpg",
+      "gia_cu": 120000,
+      "gia": 100000,
+    },
+    {
+      "ten": "Đắc nhân tâm ",
+      "tacgia": "Dale Carnegie",
+      "picture": "images/products/p2.jpg",
+      "gia_cu": 120000,
+      "gia": 100000,
+    },
+    {
+      "ten": "Đắc nhân tâm",
+      "tacgia": "",
+      "picture": "images/products/p2.jpg",
+      "gia_cu": 120000,
+      "gia": 100000,
+    }
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return   Container(
+      padding: EdgeInsets.all(13),
+      height: 370,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: product_list.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Single_prod(
+            product_ten: product_list[index]['ten'],
+            product_tacgia: product_list[index]['tacgia'],
+            product_picture: product_list[index]['picture'],
+            product_giacu: product_list[index]['gia_cu'],
+            product_gia: product_list[index]['gia'],
+          );
+        },
+      ),
+    );
+  }
+}
+

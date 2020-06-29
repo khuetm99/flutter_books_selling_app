@@ -3,7 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'components/horizontal_listview.dart';
 import 'components/horizontal_listview.dart';
 import 'components/products.dart';
-
+import 'package:flutterbooksellingapp/pages/cart.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: () {}),
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> Cart()))),
         ],
       ),
       drawer: new Drawer(
@@ -173,8 +173,10 @@ class _HomePageState extends State<HomePage> {
         ],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 4000),
-        dotSize: 4.0,
+        animationDuration: Duration(milliseconds: 2000),
+        autoplayDuration:Duration(milliseconds: 4000) ,
+        dotSize: 2.0,
         indicatorBgPadding: 6.0,
+        dotBgColor: Colors.transparent,
       ));
 }
