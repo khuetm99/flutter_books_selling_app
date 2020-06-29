@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/components/product_detail.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -40,8 +41,8 @@ class _ProductsState extends State<Products> {
   @override
   Widget build(BuildContext context) {
     return   Container(
-      padding: EdgeInsets.only(left: 13),
-      height: 350,
+      padding: EdgeInsets.all(13),
+      height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: product_list.length,
@@ -58,6 +59,8 @@ class _ProductsState extends State<Products> {
     );
   }
 }
+
+
 
 class Single_prod extends StatelessWidget {
   final product_ten;
@@ -77,9 +80,13 @@ class Single_prod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
-      onTap: () {
-
-      },
+      onTap: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails(
+        product_detail_ten: product_ten,
+        product_detail_tacgia: product_tacgia,
+        product_detail_picture: product_picture,
+        product_detail_gia: product_gia,
+        product_detail_gia_cu: product_giacu,
+      )) ),
       child: Row(
         children: <Widget>[
           Column(

@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green[700],
         title: Text('BookApp'),
         actions: <Widget>[
           new IconButton(
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                     )),
               ),
               decoration: new BoxDecoration(
-                color: Colors.redAccent,
+                color: Colors.green[700],
               ),
             ),
 //              Body
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
           // padding widget
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Danh mục'),
+            child: Text('Danh mục', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
           ),
 
           // Horizontal ListView
@@ -135,14 +135,14 @@ class _HomePageState extends State<HomePage> {
           //Sách nổi bật
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Sách nổi bật',style: TextStyle(fontSize: 20),),
+            child: Text('Sách nổi bật',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
           ),
           Products(),
 
 //            Sách mới
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Sách mới',style: TextStyle(fontSize: 20),),
+            child: Text('Sách mới',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
           ),
           FlashSale(),
 
@@ -151,6 +151,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Text('New Book'),
           ),
+
           NewBook(),
 
           //Flash Sale
@@ -172,7 +173,7 @@ class _HomePageState extends State<HomePage> {
         ],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 3000),
+        animationDuration: Duration(milliseconds: 4000),
         dotSize: 4.0,
         indicatorBgPadding: 6.0,
       ));

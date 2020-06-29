@@ -1,26 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/pages/childrenbook.dart';
+import 'product_detail.dart';
 
 //===============================HorizontaList=================================
 class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80.0,
+      height: 80,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Children',
+          InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Children',
+            ),
           ),
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Literary',
+          InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Children',
+            ),
           ),
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Curriculum',
+          InkWell(
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Children',
+            ),
           ),
           Category(
             image_location: 'images/a1.png',
@@ -45,13 +56,10 @@ class Category extends StatelessWidget {
   final String image_caption;
 
   Category({this.image_location, this.image_caption});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: InkWell(
-        onTap: () {},
+      padding: const EdgeInsets.all(1.0),
         child: Container(
           width: 100,
           child: ListTile(
@@ -68,8 +76,7 @@ class Category extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ),
+        )
     );
   }
 }
@@ -120,6 +127,7 @@ class MPProduct extends StatelessWidget {
   final String mpproduct_caption;
 
   MPProduct({this.mpproduct_location, this.mpproduct_caption});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -191,6 +199,7 @@ class NBook extends StatelessWidget {
   final String nbook_caption;
 
   NBook({this.nbook_location, this.nbook_caption});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -263,6 +272,7 @@ class FSale extends StatelessWidget {
   final String fsale_caption;
 
   FSale({this.fsale_location, this.fsale_caption});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
