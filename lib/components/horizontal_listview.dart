@@ -89,7 +89,7 @@ class HorizontalList extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/a1.png',
-              image_caption: 'Giao Khoa-Giao Trinh',
+              image_caption: 'Giao Duc-Giao Trinh',
             ),
           ),
         ],
