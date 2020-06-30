@@ -13,37 +13,84 @@ class HorizontalList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/a1.png',
-              image_caption: 'Children',
+              image_caption: 'Thieu Nhi',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/a1.png',
-              image_caption: 'Children',
+              image_caption: 'Kinh Te',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> ChildrenBook())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/a1.png',
-              image_caption: 'Children',
+              image_caption: 'Ky Nang Song',
             ),
           ),
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Language',
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Ngoai Ngu',
+            ),
           ),
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Politic-Law',
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Chinh Tri-Phap Luat',
+            ),
           ),
-          Category(
-            image_location: 'images/a1.png',
-            image_caption: 'Science-Technology',
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Khoa Hoc-Cong Nghe',
+            ),
+          ),
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Lich Su',
+            ),
+          ),
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Manga-Comic',
+            ),
+          ),
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Tham Khao',
+            ),
+          ),
+          InkWell(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ChildrenBook())),
+            child: Category(
+              image_location: 'images/a1.png',
+              image_caption: 'Giao Khoa-Giao Trinh',
+            ),
           ),
         ],
       ),
@@ -59,7 +106,7 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(1.0),
+        padding: const EdgeInsets.all(1.0),
         child: Container(
           width: 100,
           child: ListTile(
@@ -76,8 +123,7 @@ class Category extends StatelessWidget {
               ),
             ),
           ),
-        )
-    );
+        ));
   }
 }
 
