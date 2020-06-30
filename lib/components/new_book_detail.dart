@@ -2,28 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutterbooksellingapp/main.dart';
-import 'package:flutterbooksellingapp/components/products.dart';
+import 'package:flutterbooksellingapp/components/new_book.dart';
 
-class ProductDetails extends StatefulWidget {
-  final product_detail_ten;
-  final product_detail_tacgia;
-  final product_detail_gia;
-  final product_detail_gia_cu;
-  final product_detail_picture;
+class NewBookDetail extends StatefulWidget {
+  final newbook_detail_ten;
+  final newbook_detail_tacgia;
+  final newbook_detail_gia;
+  final newbook_detail_gia_cu;
+  final newbook_detail_picture;
 
-  ProductDetails({
-    this.product_detail_ten,
-    this.product_detail_tacgia,
-    this.product_detail_picture,
-    this.product_detail_gia,
-    this.product_detail_gia_cu,
+  NewBookDetail({
+    this.newbook_detail_ten,
+    this.newbook_detail_tacgia,
+    this.newbook_detail_picture,
+    this.newbook_detail_gia,
+    this.newbook_detail_gia_cu,
   });
 
   @override
-  _ProductDetailsState createState() => _ProductDetailsState();
+  _NewBookDetailState createState() => _NewBookDetailState();
 }
 
-class _ProductDetailsState extends State<ProductDetails> {
+class _NewBookDetailState extends State<NewBookDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,20 +56,20 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: GridTile(
             child: Container(
               color: Colors.white,
-              child: Image.asset(widget.product_detail_picture),
+              child: Image.asset(widget.newbook_detail_picture),
             ),
             footer: Container(
               color: Colors.white70,
               child: ListTile(
                 leading: new Text(
-                  widget.product_detail_ten,
+                  widget.newbook_detail_ten,
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
                 ),
                 title: Row(
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        '${widget.product_detail_gia_cu}\₫',
+                        '${widget.newbook_detail_gia_cu}\₫',
                         style: TextStyle(
                             color: Colors.black,
                             decoration: TextDecoration.lineThrough),
@@ -77,7 +77,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Expanded(
                         child: Text(
-                      '${widget.product_detail_gia}\₫',
+                      '${widget.newbook_detail_gia}\₫',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -95,14 +95,14 @@ class _ProductDetailsState extends State<ProductDetails> {
             Container(
               child: ListTile(
                 leading: new Text(
-                  widget.product_detail_ten,
+                  widget.newbook_detail_ten,
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
                 ),
                 title: Row(
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        '${widget.product_detail_gia_cu}\₫',
+                        '${widget.newbook_detail_gia_cu}\₫',
                         style: TextStyle(
                             color: Colors.black,
                             decoration: TextDecoration.lineThrough),
@@ -110,7 +110,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Expanded(
                         child: Text(
-                      '${widget.product_detail_gia}\₫',
+                      '${widget.newbook_detail_gia}\₫',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -128,7 +128,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   padding: EdgeInsets.all(8),
                 ),
                 Text(
-                  widget.product_detail_tacgia,
+                  widget.newbook_detail_tacgia,
                   style: TextStyle(fontWeight: FontWeight.w300, fontSize: 17),
                   textAlign: TextAlign.left,
                   textDirection: TextDirection.ltr,
@@ -228,7 +228,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             Padding(
               padding: EdgeInsets.all(5.0),
               child: Text(
-                widget.product_detail_ten,
+                widget.newbook_detail_ten,
                 style: TextStyle(fontSize: 14),
               ),
             )
@@ -302,20 +302,20 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         Container(
           height: 380.0,
-          child: SimilarNewBook(),
+          child: SimilarProducts(),
         )
       ]),
     );
   }
 }
 
-class SimilarNewBook extends StatefulWidget {
+class SimilarProducts extends StatefulWidget {
   @override
-  _SimilarNewBookState createState() => _SimilarNewBookState();
+  _SimilarProductsState createState() => _SimilarProductsState();
 }
 
-class _SimilarNewBookState extends State<SimilarNewBook> {
-  var product_list = [
+class _SimilarProductsState extends State<SimilarProducts> {
+  var new_book_list = [
     {
       "ten": "One Piece tập 92",
       "picture": "images/c1.jpg",
@@ -367,14 +367,14 @@ class _SimilarNewBookState extends State<SimilarNewBook> {
       height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: product_list.length,
+        itemCount: new_book_list.length,
         itemBuilder: (BuildContext context, int index) {
-          return Single_prod(
-            product_ten: product_list[index]['ten'],
-            product_tacgia: product_list[index]['tacgia'],
-            product_picture: product_list[index]['picture'],
-            product_giacu: product_list[index]['gia_cu'],
-            product_gia: product_list[index]['gia'],
+          return NewBook_Single_prod(
+            newbook_ten: new_book_list[index]['ten'],
+            newbook_tacgia: new_book_list[index]['tacgia'],
+            newbook_picture: new_book_list[index]['picture'],
+            newbook_giacu: new_book_list[index]['gia_cu'],
+            newbook_gia: new_book_list[index]['gia'],
           );
         },
       ),

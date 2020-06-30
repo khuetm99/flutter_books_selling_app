@@ -4,6 +4,7 @@ import 'components/horizontal_listview.dart';
 import 'components/horizontal_listview.dart';
 import 'components/products.dart';
 import 'package:flutterbooksellingapp/pages/cart.dart';
+import 'components/new_book.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -37,7 +38,8 @@ class _HomePageState extends State<HomePage> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> Cart()))),
+              onPressed: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Cart()))),
         ],
       ),
       drawer: new Drawer(
@@ -126,7 +128,10 @@ class _HomePageState extends State<HomePage> {
           // padding widget
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Danh mục', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
+            child: Text(
+              'Danh mục',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
           ),
 
           // Horizontal ListView
@@ -135,26 +140,22 @@ class _HomePageState extends State<HomePage> {
           //Sách nổi bật
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Sách nổi bật',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
+            child: Text(
+              'Sách nổi bật',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
           ),
           Products(),
 
 //            Sách mới
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Sách mới',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+            child: Text(
+              'Sách mới',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
           ),
-          FlashSale(),
-
-          //New Book
-          new Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('New Book'),
-          ),
-
           NewBook(),
-
-          //Flash Sale
 
         ],
       ),
@@ -174,7 +175,7 @@ class _HomePageState extends State<HomePage> {
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
         animationDuration: Duration(milliseconds: 2000),
-        autoplayDuration:Duration(milliseconds: 4000) ,
+        autoplayDuration: Duration(milliseconds: 4000),
         dotSize: 2.0,
         indicatorBgPadding: 6.0,
         dotBgColor: Colors.transparent,
