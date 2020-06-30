@@ -32,7 +32,8 @@ class _ProductDetailsState extends State<ProductDetails> {
         centerTitle: true,
         backgroundColor: Colors.green[700],
         title: InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> new HomePage())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => new HomePage())),
             child: Text('BookApp')),
         actions: <Widget>[
           new IconButton(
@@ -68,7 +69,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        '${widget.product_detail_gia_cu}',
+                        '${widget.product_detail_gia_cu}\₫',
                         style: TextStyle(
                             color: Colors.black,
                             decoration: TextDecoration.lineThrough),
@@ -76,7 +77,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Expanded(
                         child: Text(
-                      '${widget.product_detail_gia}',
+                      '${widget.product_detail_gia}\₫',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -101,7 +102,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        '${widget.product_detail_gia_cu}',
+                        '${widget.product_detail_gia_cu}\₫',
                         style: TextStyle(
                             color: Colors.black,
                             decoration: TextDecoration.lineThrough),
@@ -109,7 +110,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     Expanded(
                         child: Text(
-                      '${widget.product_detail_gia}',
+                      '${widget.product_detail_gia}\₫',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -168,20 +169,23 @@ class _ProductDetailsState extends State<ProductDetails> {
             Expanded(
               child: MaterialButton(
                 padding: EdgeInsets.all(10),
-                  onPressed: () {},
-                  color: Colors.redAccent,
-                  textColor: Colors.white,
-                  elevation: 0.2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Thêm vào giỏ hàng ',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Icon(Icons.add_shopping_cart, color: Colors.white,),
-                    ],
-                  ),
+                onPressed: () {},
+                color: Colors.redAccent,
+                textColor: Colors.white,
+                elevation: 0.2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Thêm vào giỏ hàng ',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.add_shopping_cart,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
               ),
             )
           ],
@@ -193,7 +197,6 @@ class _ProductDetailsState extends State<ProductDetails> {
             'Mô tả sách',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
-
           subtitle: Text(
             ''' \n    Thế giới ngầm được phản ánh trong tiểu thuyết Bố Già là sự gặp gỡ giữa một bên là ý chí cương cường và nền tảng gia tộc chặt chẽ theo truyền thống mafia xứ Sicily với một bên là xã hội Mỹ nhập nhằng đen trắng, mảnh đất màu mỡ cho những cơ hội làm ăn bất chính hứa hẹn những món lợi kếch xù. Trong thế giới ấy, hình tượng Bố Già được tác giả dày công khắc họa đã trở thành bức chân dung bất hủ trong lòng người đọc. Từ một kẻ nhập cư tay trắng đến ông trùm tột đỉnh quyền uy, Don Vito Corleone là con rắn hổ mang thâm trầm, nguy hiểm khiến kẻ thù phải kiềng nể, e dè, nhưng cũng được bạn bè, thân quyến xem như một đấng toàn năng đầy nghĩa khí. Nhân vật trung tâm ấy đồng thời cũng là hiện thân của một pho triết lí rất “đời” được nhào nặn từ vốn sống của hàng chục năm lăn lộn giữa chốn giang hồ bao phen vào sinh ra tử, vì thế mà có ý kiến cho rằng “Bố Già là sự tổng hòa của mọi hiểu biết. Bố Già là đáp án cho mọi câu hỏi.
    
@@ -205,59 +208,102 @@ class _ProductDetailsState extends State<ProductDetails> {
 //        ================= Thông tin sách ==================
         Row(
           children: <Widget>[
-              Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                  child : Text(' Thông tin sách ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  ' Thông tin sách ',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                )),
           ],
         ),
 
         Row(
           children: <Widget>[
-            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                child : Text('  Tên sách ', style: TextStyle(fontSize: 15, color: Colors.grey),)),
-            Padding(padding: EdgeInsets.all(5.0),
-              child: Text(widget.product_detail_ten,style: TextStyle(fontSize: 14),),
-            )],
-        ),
-
-        Row(
-          children: <Widget>[
-            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                child : Text('  Loại sách ', style: TextStyle(fontSize: 15, color: Colors.grey),)),
-            Padding(padding: EdgeInsets.all(5),
-              child: Text("Name",style: TextStyle(fontSize: 14),),)
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  '  Tên sách ',
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
+                )),
+            Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Text(
+                widget.product_detail_ten,
+                style: TextStyle(fontSize: 14),
+              ),
+            )
           ],
         ),
 
         Row(
           children: <Widget>[
-            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                child : Text('  Nhà xuất bản ', style: TextStyle(fontSize: 15, color: Colors.grey),)),
-            Padding(padding: EdgeInsets.all(5),
-              child: Text("Name",style: TextStyle(fontSize: 14),),)
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  '  Loại sách ',
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
+                )),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                "Name",
+                style: TextStyle(fontSize: 14),
+              ),
+            )
           ],
         ),
 
         Row(
           children: <Widget>[
-            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                child : Text('  Trạng thái', style: TextStyle(fontSize: 15, color: Colors.grey),)),
-            Padding(padding: EdgeInsets.all(5),
-              child: Text("Name",style: TextStyle(fontSize: 14),),)
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  '  Nhà xuất bản ',
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
+                )),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                "Name",
+                style: TextStyle(fontSize: 14),
+              ),
+            )
+          ],
+        ),
+
+        Row(
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  '  Trạng thái',
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
+                )),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                "Name",
+                style: TextStyle(fontSize: 14),
+              ),
+            )
           ],
         ),
         Divider(),
 //        ===========Sản phẩm gợi ý ===========
         Row(
           children: <Widget>[
-            Padding(padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
-                child : Text(' Gợi ý sách ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
+            Padding(
+                padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                child: Text(
+                  ' Gợi ý sách ',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                )),
           ],
         ),
         Container(
           height: 380.0,
           child: SimilarProducts(),
         )
-
       ]),
     );
   }
@@ -271,38 +317,52 @@ class SimilarProducts extends StatefulWidget {
 class _SimilarProductsState extends State<SimilarProducts> {
   var product_list = [
     {
-      "ten": "Bố Già",
-      "tacgia": "Mario puzo",
-      "picture": "images/products/p1.jpg",
-      "gia_cu": 120000,
-      "gia": 100000,
+      "ten": "One Piece tập 92",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 17.550,
+      "gia_cu": 19.500,
     },
     {
-      "ten": "Đắc nhân tâm",
-      "tacgia": "Dale Carnegie",
-      "picture": "images/products/p2.jpg",
-      "gia_cu": 120000,
-      "gia": 100000,
+      "ten": "Doraemon tập 6",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 16.200,
+      "gia_cu": 18.000,
     },
     {
-      "ten": "Đắc nhân tâm ",
-      "tacgia": "Dale Carnegie",
-      "picture": "images/products/p2.jpg",
-      "gia_cu": 120000,
-      "gia": 100000,
+      "ten": "Đại Việt Sử Ký Toàn Thư",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 108.900,
+      "gia_cu": 198.000,
     },
     {
-      "ten": "Đắc nhân tâm",
-      "tacgia": "",
-      "picture": "images/products/p2.jpg",
-      "gia_cu": 120000,
-      "gia": 100000,
+      "ten": "Kỷ Nguyên Trí Tuệ Nhân Tạo",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 70.010,
+      "gia_cu": 99.000,
+    },
+    {
+      "ten": "Giáo Dục Công Dân Lớp 9",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 4.000,
+      "gia_cu": 5.400,
+    },
+    {
+      "ten": "28 Ngày Tự Học Tiếng Nhật",
+      "picture": "images/c1.jpg",
+      "soluong": 2,
+      "gia": 162.289,
+      "gia_cu": 46.512,
     }
   ];
 
   @override
   Widget build(BuildContext context) {
-    return   Container(
+    return Container(
       padding: EdgeInsets.all(13),
       height: 370,
       child: ListView.builder(
@@ -321,4 +381,3 @@ class _SimilarProductsState extends State<SimilarProducts> {
     );
   }
 }
-
