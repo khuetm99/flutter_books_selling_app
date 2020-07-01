@@ -2,25 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutterbooksellingapp/main.dart';
-import 'package:flutterbooksellingapp/components/products.dart';
+import 'package:flutterbooksellingapp/components/products_show.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
+import 'package:flutterbooksellingapp/pages/similar_products.dart';
 
 class ProductDetails extends StatefulWidget {
-//  final product_detail_ten;
-//  final product_detail_tacgia;
-//  final product_detail_gia;
-//  final product_detail_gia_cu;
-//  final product_detail_picture;
+
 final Product bookObject;
 
- ProductDetails({
-//    this.product_detail_ten,
-//    this.product_detail_tacgia,
-//    this.product_detail_picture,
-//    this.product_detail_gia,
-//    this.product_detail_gia_cu,
-    this.bookObject,
-  });
+ ProductDetails({this.bookObject,});
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -295,65 +285,4 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 }
 
-List<Product> product_similar_list = [
-  Product(
-    id: "12",
-    name: "Bố già",
-    author: "Mario puzo",
-    image: "images/products/p1.jpg",
-    old_price: '120,000',
-    price: '100,000',
-  ),
-  Product(
-    id: "42",
-    name: "Đắc nhân tâm",
-    author: "Dale Carnegie",
-    image: "images/products/p2.jpg",
-    old_price: '120000',
-    price: '100,000',
-  ),
-  Product(
-    id: "3",
-    name: "Bố già",
-    author: "Mario puzo",
-    image: "images/products/p1.jpg",
-    old_price: '120,000',
-    price: '100,000',
-  ),
-  Product(
-    id: "2",
-    name: "Bố già",
-    author: "Mario puzo",
-    image: "images/products/p1.jpg",
-    old_price: '120,000',
-    price: '100,000',
-  ),
-];
 
-class SimilarProducts extends StatefulWidget {
-  @override
-  _SimilarProductsState createState() => _SimilarProductsState();
-}
-
-class _SimilarProductsState extends State<SimilarProducts> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(13),
-      height: 370,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: product_similar_list.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Single_prod(
-            product_ten: product_similar_list[index].name,
-            product_tacgia: product_similar_list[index].author,
-            product_picture: product_similar_list[index].image,
-            product_giacu: product_similar_list[index].old_price,
-            product_gia: product_similar_list[index].price,
-          );
-        },
-      ),
-    );
-  }
-}

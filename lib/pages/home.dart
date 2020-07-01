@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
 import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
-import 'package:flutterbooksellingapp/components/products.dart';
+import 'file:///D:/flutter_books_selling_app/lib/pages/new_book.dart';
+import 'package:flutterbooksellingapp/components/products_show.dart';
 import 'package:flutterbooksellingapp/pages/cart.dart';
 
 class HomePage extends StatefulWidget {
@@ -131,19 +132,19 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Text('Sách nổi bật',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
           ),
-          Similar_Products(),
+          Popular_products(),
 
 //            Sách mới
           new Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text('Sách mới',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
           ),
-          FlashSale(),
+          NewBook(),
 
           //New Book
           new Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('New Book'),
+            child: Text('Sách mua nhiều'),
           ),
 
 //          NewBook(),

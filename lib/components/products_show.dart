@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'file:///D:/flutter_books_selling_app/lib/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 
-List<Product> product_similar_list = [
+List<Product> product_popular_list = [
   Product(
     id: "12",
     name: "Bố già",
@@ -28,12 +28,12 @@ List<Product> product_similar_list = [
   ),
 ];
 
-class Similar_Products extends StatefulWidget {
+class Popular_products extends StatefulWidget {
   @override
-  _Similar_ProductsState createState() => _Similar_ProductsState();
+  _Popular_productsState createState() => _Popular_productsState();
 }
 
-class _Similar_ProductsState extends State<Similar_Products> {
+class _Popular_productsState extends State<Popular_products> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,19 +41,19 @@ class _Similar_ProductsState extends State<Similar_Products> {
       height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: product_similar_list.length,
+        itemCount: product_popular_list.length,
         itemBuilder: (BuildContext context, int index) {
-          String title = product_similar_list[index].name.length > 17
-              ? product_similar_list[index].name.substring(0, 15) + "..."
-              : product_similar_list[index].name;
+          String title = product_popular_list[index].name.length > 17
+              ? product_popular_list[index].name.substring(0, 15) + "..."
+              : product_popular_list[index].name;
 //          var value = int.parse(product_list[index].price);
           return Single_prod(
             product_ten: title,
-            product_tacgia: product_similar_list[index].author,
-            product_picture: product_similar_list[index].image,
-            product_gia: product_similar_list[index].price,
-            product_giacu: product_similar_list[index].old_price,
-            bookObject: product_similar_list[index],
+            product_tacgia: product_popular_list[index].author,
+            product_picture: product_popular_list[index].image,
+            product_gia: product_popular_list[index].price,
+            product_giacu: product_popular_list[index].old_price,
+            bookObject: product_popular_list[index],
           );
         },
       ),
@@ -87,68 +87,71 @@ class Single_prod extends StatelessWidget {
             MaterialPageRoute(
                 builder: (context) => ProductDetails(bookObject: bookObject)));
       },
-      child: Row(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                height: 220,
-                width: 150,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
-                    child: Image.asset(
-                      product_picture,
-                      fit: BoxFit.cover,
-                    )),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                product_ten,
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 7,
-              ),
-              Text(
-                product_tacgia,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                  fontWeight: FontWeight.w300,
+      child: Container(
+        height: 380,
+        child: Row(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 220,
+                  width: 150,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.asset(
+                        product_picture,
+                        fit: BoxFit.cover,
+                      )),
                 ),
-                softWrap: true,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(product_gia + 'đ',
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  product_ten,
                   style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500)),
-              SizedBox(
-                height: 12,
-              ),
-              Text(product_giacu + 'đ',
+                      fontSize: 20,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 7,
+                ),
+                Text(
+                  product_tacgia,
                   style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black,
-                      decoration: TextDecoration.lineThrough,
-                      fontWeight: FontWeight.w300))
-            ],
-          ),
-          SizedBox(
-            width: 20,
-          )
-        ],
+                    fontSize: 15,
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  softWrap: true,
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(product_gia + 'đ',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500)),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(product_giacu + 'đ',
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        decoration: TextDecoration.lineThrough,
+                        fontWeight: FontWeight.w300))
+              ],
+            ),
+            SizedBox(
+              width: 20,
+            )
+          ],
+        ),
       ),
     );
   }
