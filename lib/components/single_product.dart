@@ -134,7 +134,7 @@ class Single_prod_Pages extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    height: 220,
+                    height: 210,
                     width: 150,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.0)),
@@ -145,9 +145,7 @@ class Single_prod_Pages extends StatelessWidget {
                           fit: BoxFit.fill,
                         )),
                   ),
-//                  SizedBox(
-//                    height: 15,
-//                  ),
+                  Padding(padding: EdgeInsets.all(5),),
                   Expanded(
                     child: Text(
                       product_ten,
