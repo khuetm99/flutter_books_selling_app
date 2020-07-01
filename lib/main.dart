@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Text('Sách nổi bật',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
           ),
-//          Products(),
+          Similar_Products(),
 
 //            Sách mới
           new Padding(
