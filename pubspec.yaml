@@ -55,9 +55,32 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - images/
-    - images/products/
-
+    - images/products/p1.jpg
+    - images/products/p2.jpg
+    - images/products/p3.jpg
+    - images/products/p4.jpg
+    - images/a1.png
+    - images/c1.jpg
+    - images/c2.png
+    - images/c3.jpg
+    - images/c4.jpg
+    - images/products/manga-comic/op92.jpg
+    - images/products/manga-comic/doraemon6.jpg
+    - images/products/lichsu/daivietsukitoanthu.jpg
+    - images/products/khoahoc-congnhe/kynguyenttnt.jpg
+    - images/products/giaokhoa-giaotrinh/congdan9.jpg
+    - images/products/ngoaingu/28ngaytuhoctiengnhat.jpg
+    - images/products/thamkhao/45tracnghiemta.jpg
+    - images/icon/iconthieunhi.jpg
+    - images/icon/iconchinhtriphapluat.jpg
+    - images/icon/iconkhoahoccongnghe.jpg
+    - images/icon/iconkinhte.jpg
+    - images/icon/iconkynangsong.jpg
+    - images/icon/iconlichsu.jpg
+    - images/icon/iconmangacomic.png
+    - images/icon/iconngoaingu.jpg
+    - images/icon/iconsgkgt.png
+    - images/icon/iconthamkhao.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

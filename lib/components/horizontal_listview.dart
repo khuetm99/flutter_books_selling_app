@@ -16,63 +16,63 @@ class HorizontalList extends StatelessWidget {
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Thieu Nhi',
+              image_location: 'images/icon/iconthieunhi.jpg',
+              image_caption: 'Thiếu Nhi',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Kinh Te',
+              image_location: 'images/icon/iconkinhte.jpg',
+              image_caption: 'Kinh Tế',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Ky Nang Song',
+              image_location: 'images/icon/iconkynangsong.jpg',
+              image_caption: 'Kỹ Năng Sống',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Ngoai Ngu',
+              image_location: 'images/icon/iconngoaingu.jpg',
+              image_caption: 'Ngoại Ngữ',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Chinh Tri-Phap Luat',
+              image_location: 'images/icon/iconchinhtriphapluat.jpg',
+              image_caption: 'Chính Trị-Pháp Luật',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Khoa Hoc-Cong Nghe',
+              image_location: 'images/icon/iconkhoahoccongnghe.jpg',
+              image_caption: 'Khoa Học-Công Nghệ',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Lich Su',
+              image_location: 'images/icon/iconlichsu.jpg',
+              image_caption: 'Lịch Sử',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
+              image_location: 'images/icon/iconmangacomic.png',
               image_caption: 'Manga-Comic',
             ),
           ),
@@ -80,16 +80,16 @@ class HorizontalList extends StatelessWidget {
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Tham Khao',
+              image_location: 'images/icon/iconthamkhao.jpg',
+              image_caption: 'Tham Khảo',
             ),
           ),
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
-              image_location: 'images/a1.png',
-              image_caption: 'Giao Duc-Giao Trinh',
+              image_location: 'images/icon/iconsgkgt.png',
+              image_caption: 'Giáo Khoa-Giáo Trình',
             ),
           ),
         ],
@@ -128,81 +128,8 @@ class Category extends StatelessWidget {
 }
 
 //=====================content=========================
-//Most purchased product
-class MostPurchasedProduct extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200.0,
-      width: 150,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'Harry Potter(p1)',
-          ),
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'Harry Potter(p6)',
-          ),
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'Harry Potter(p7)',
-          ),
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'One Piece(tap 109)',
-          ),
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'Giao Trinh Tieng Anh',
-          ),
-          MPProduct(
-            mpproduct_location: 'images/a1.png',
-            mpproduct_caption: 'Bai Tap Toan(nang cao)',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MPProduct extends StatelessWidget {
-  final String mpproduct_location;
-  final String mpproduct_caption;
-
-  MPProduct({this.mpproduct_location, this.mpproduct_caption});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: InkWell(
-        onTap: () {},
-        child: Container(
-          width: 100.0,
-          child: ListTile(
-              title: Image.asset(
-                mpproduct_location,
-                width: 150.0,
-                height: 100.0,
-              ),
-              subtitle: Container(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  mpproduct_caption,
-                  style: TextStyle(fontSize: 11),
-                ),
-              )),
-        ),
-      ),
-    );
-  }
-}
-
 //New book
-class NewBook extends StatelessWidget {
+/*class NewBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -272,7 +199,7 @@ class NBook extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 //Flash Sale
 class FlashSale extends StatelessWidget {
