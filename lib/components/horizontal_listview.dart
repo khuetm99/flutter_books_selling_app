@@ -5,6 +5,10 @@ import '../pages/product_detail.dart';
 
 //===============================HorizontaList=================================
 class HorizontalList extends StatelessWidget {
+  final Category category;
+
+  HorizontalList({this.category});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,72 +25,72 @@ class HorizontalList extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconkinhte.jpg',
               image_caption: 'Kinh Tế',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconkynangsong.jpg',
               image_caption: 'Kỹ Năng Sống',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconngoaingu.jpg',
               image_caption: 'Ngoại Ngữ',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconchinhtriphapluat.jpg',
               image_caption: 'Chính Trị-Pháp Luật',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconkhoahoccongnghe.jpg',
               image_caption: 'Khoa Học-Công Nghệ',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconlichsu.jpg',
               image_caption: 'Lịch Sử',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconmangacomic.png',
               image_caption: 'Manga-Comic',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconthamkhao.jpg',
               image_caption: 'Tham Khảo',
             ),
           ),
           InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
+//            onTap: () => Navigator.push(context,
+//                MaterialPageRoute(builder: (context) => ChildrenBook())),
             child: Category(
               image_location: 'images/icon/iconsgkgt.png',
               image_caption: 'Giáo Khoa-Giáo Trình',

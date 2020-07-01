@@ -3,8 +3,9 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
 import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
 import 'file:///D:/flutter_books_selling_app/lib/pages/new_book.dart';
-import 'package:flutterbooksellingapp/components/products_show.dart';
+import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/pages/cart.dart';
+import 'package:flutterbooksellingapp/pages/popular_books.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,

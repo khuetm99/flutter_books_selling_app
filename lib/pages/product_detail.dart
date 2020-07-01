@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutterbooksellingapp/main.dart';
-import 'package:flutterbooksellingapp/components/products_show.dart';
+import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/similar_products.dart';
+import '../provider/product.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
-
 final Product bookObject;
 
  ProductDetails({this.bookObject,});
@@ -19,6 +20,8 @@ final Product bookObject;
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -278,7 +281,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         ),
         Container(
           height: 380.0,
-          child: SimilarProducts(),
+//          child: SimilarProducts(),
         )
       ]),
     );

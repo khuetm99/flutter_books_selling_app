@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutterbooksellingapp/models/products.dart';
-import 'package:flutterbooksellingapp/pages/product_detail.dart';
-import 'package:flutterbooksellingapp/components/single_product.dart';
 
-List<Product> product_new_list = [
+import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/components/single_product.dart';
+import 'package:flutterbooksellingapp/models/products.dart';
+
+List<Product> product_popular_list = [
   Product(
     id: "12",
     name: "Bố già",
@@ -19,32 +19,22 @@ List<Product> product_new_list = [
   ),
   Product(
     id: "42",
-    name: "One Piece tập 92 ",
-    author: "Masashi Kishimoto",
-    image: "images/products/manga-comic/op92.jpg",
+    name: "Đắc nhân tâm bìa sách ",
+    author: "Dale Carnegie",
+    image: "images/products/p2.jpg",
     old_price: '120,000',
-    price: '20,550',
+    price: '100,000',
     nxb: 'Tuoi tre',
     description: 'a',
   ),
-  Product(
-    name: "One Piece tập 92 ",
-    author: "Masashi Kishimoto",
-    image: "images/products/manga-comic/op92.jpg",
-    old_price: '120,000',
-    price: '20,550',
-    nxb: 'Tuoi tre',
-    description: 'a',
-  ),
-] ;
+];
 
-class NewBook extends StatefulWidget {
+class Popular_products extends StatefulWidget {
   @override
-  _NewBookState createState() => _NewBookState();
+  _Popular_productsState createState() => _Popular_productsState();
 }
 
-class _NewBookState extends State<NewBook> {
-
+class _Popular_productsState extends State<Popular_products> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,19 +42,22 @@ class _NewBookState extends State<NewBook> {
       height: 370,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: product_new_list.length,
+        itemCount: product_popular_list.length,
         itemBuilder: (BuildContext context, int index) {
+          String title = product_popular_list[index].name.length > 17
+              ? product_popular_list[index].name.substring(0, 15) + "..."
+              : product_popular_list[index].name;
+//          var value = int.parse(product_list[index].price);
           return Single_prod(
-            product_ten: product_new_list[index].name,
-            product_tacgia: product_new_list[index].author,
-            product_picture: product_new_list[index].image,
-            product_giacu: product_new_list[index].old_price,
-            product_gia: product_new_list[index].price,
-            bookObject: product_new_list[index],
+            product_ten: title,
+            product_tacgia: product_popular_list[index].author,
+            product_picture: product_popular_list[index].image,
+            product_gia: product_popular_list[index].price,
+            product_giacu: product_popular_list[index].old_price,
+            bookObject: product_popular_list[index],
           );
         },
       ),
     );
   }
 }
-
