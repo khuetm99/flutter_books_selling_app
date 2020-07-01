@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
             child: Text('New Book'),
           ),
 
-          NewBook(),
+//          NewBook(),
 
           //Flash Sale
 
