@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/pages/childrenbook.dart';
-import 'product_detail.dart';
+import '../pages/product_detail.dart';
 
 //===============================HorizontaList=================================
 class HorizontalList extends StatelessWidget {
