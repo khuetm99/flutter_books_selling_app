@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/models/category.dart';
 import 'package:flutterbooksellingapp/pages/childrenbook.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
@@ -105,6 +106,7 @@ class HorizontalList extends StatelessWidget {
   }
 }
 
+
 class Category_List extends StatefulWidget {
   @override
   _Category_ListState createState() => _Category_ListState();
@@ -113,27 +115,29 @@ class Category_List extends StatefulWidget {
 class _Category_ListState extends State<Category_List> {
   @override
   Widget build(BuildContext context) {
-    final categoryProvider  =  Provider.of<CategoryProvider>(context);
-    return ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categoryProvider.categories.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Single_category(
-            image_caption: categoryProvider.categories[index].name,
-            image_location: categoryProvider.categories[index].image,
-            category_object: categoryProvider.categories[index]
-          );
-        });
+    final categoryProvider = Provider.of<CategoryProvider>(context);
+    return Container(
+      padding: EdgeInsets.all(13),
+      height: 200,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: categoryProvider.categories.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Single_category_list(
+                category_object: categoryProvider.categories[index]);
+          }),
+    );
   }
 }
-
 
 class Single_category extends StatelessWidget {
   final String image_location;
   final String image_caption;
   final Category category_object;
 
-  Single_category({this.image_location, this.image_caption, this.category_object});
+  Single_category(
+      {this.image_location, this.image_caption, this.category_object});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -158,76 +162,65 @@ class Single_category extends StatelessWidget {
   }
 }
 
+class Single_category_list extends StatelessWidget {
+  final Category category_object;
 
-//Flash Sale
-class FlashSale extends StatelessWidget {
+  Single_category_list({this.category_object});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
+    return Padding(
+      padding: const EdgeInsets.all(6),
+      child: Stack(
         children: <Widget>[
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Toan 7(tap 1) - 20%',
+          Container(
+            width: 140,
+            height: 160,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned.fill(child: Align(
+                      alignment: Alignment.center,
+                      child: Loading(),
+                    )),
+                    Center(
+                      child: Image.asset( category_object.image, fit: BoxFit.cover,),
+                    )
+                  ],
+                )),
           ),
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Ngu Van 9(tap 2) - 17%',
+
+          Container(
+            width: 140,
+            height: 150,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.6),
+                    Colors.black.withOpacity(0.4),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0.05),
+                    Colors.black.withOpacity(0.025),
+                  ],
+                )),
           ),
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Giao Trinh Tieng Anh - 10%',
-          ),
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Nha Gia Kim - 15%',
-          ),
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Gone Girl - 5%',
-          ),
-          FSale(
-            fsale_location: 'images/a1.png',
-            fsale_caption: 'Nuoi Con - 19%',
-          ),
+
+          Positioned.fill(
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w300,))))
         ],
       ),
     );
   }
 }
 
-class FSale extends StatelessWidget {
-  final String fsale_location;
-  final String fsale_caption;
-
-  FSale({this.fsale_location, this.fsale_caption});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: InkWell(
-        onTap: () {},
-        child: Container(
-          width: 100.0,
-          child: ListTile(
-            title: Image.asset(
-              fsale_location,
-              width: 150.0,
-              height: 100.0,
-            ),
-            subtitle: Container(
-              alignment: Alignment.topCenter,
-              child: Text(
-                fsale_caption,
-                style: TextStyle(fontSize: 11),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

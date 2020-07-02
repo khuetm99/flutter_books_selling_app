@@ -49,11 +49,6 @@ class _Popular_productsState extends State<Popular_products> {
               : product_popular_list[index].name;
 //          var value = int.parse(product_list[index].price);
           return Single_prod(
-            product_ten: title,
-            product_tacgia: product_popular_list[index].author,
-            product_picture: product_popular_list[index].image,
-            product_gia: product_popular_list[index].price,
-            product_giacu: product_popular_list[index].old_price,
             bookObject: product_popular_list[index],
           );
         },

@@ -55,11 +55,6 @@ class _NewBookState extends State<NewBook> {
         itemCount: product_new_list.length,
         itemBuilder: (BuildContext context, int index) {
           return Single_prod(
-            product_ten: product_new_list[index].name,
-            product_tacgia: product_new_list[index].author,
-            product_picture: product_new_list[index].image,
-            product_giacu: product_new_list[index].old_price,
-            product_gia: product_new_list[index].price,
             bookObject: product_new_list[index],
           );
         },

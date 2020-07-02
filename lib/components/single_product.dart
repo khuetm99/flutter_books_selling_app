@@ -6,19 +6,10 @@ import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';
 
 class Single_prod extends StatelessWidget {
-  final product_ten;
-  final product_tacgia;
-  final product_picture;
-  final product_giacu;
-  final product_gia;
   final Product bookObject;
 
   Single_prod(
-      {this.product_ten,
-      this.product_tacgia,
-      this.product_picture,
-      this.product_giacu,
-      this.product_gia,
+      {
       this.bookObject});
 
   @override
@@ -44,7 +35,7 @@ class Single_prod extends StatelessWidget {
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(5.0),
                       child: Image.asset(
-                        product_picture,
+                        bookObject.image,
                         fit: BoxFit.cover,
                       )),
                 ),
@@ -52,7 +43,7 @@ class Single_prod extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  product_ten,
+                  bookObject.name,
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.black87,
@@ -62,7 +53,7 @@ class Single_prod extends StatelessWidget {
                   height: 7,
                 ),
                 Text(
-                  product_tacgia,
+                  bookObject.author,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black45,
@@ -73,7 +64,7 @@ class Single_prod extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
-                Text(product_gia + 'đ',
+                Text(bookObject.price + 'đ',
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
@@ -81,7 +72,7 @@ class Single_prod extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
-                Text(product_giacu + 'đ',
+                Text(bookObject.old_price + 'đ',
                     style: TextStyle(
                         fontSize: 13,
                         color: Colors.black,

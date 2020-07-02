@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
-import 'package:flutterbooksellingapp/components/horizontal_listview.dart';
+import 'package:flutterbooksellingapp/components/single_category.dart';
+import 'package:flutterbooksellingapp/components/single_category.dart';
 import 'file:///D:/flutter_books_selling_app/lib/pages/new_book.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/pages/cart.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
+import 'package:flutterbooksellingapp/provider/category.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
+//    final categoryProvider = Provider.of<CategoryProvider>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
@@ -126,7 +128,8 @@ class _HomePageState extends State<HomePage> {
             child: Text('Danh mục', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600), ),
           ),
 
-          // Horizontal ListView
+          // Category ListView
+
           Category_List(),
 
           //Sách nổi bật
