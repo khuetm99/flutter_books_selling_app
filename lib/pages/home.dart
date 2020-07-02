@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // Horizontal ListView
-          HorizontalList(),
+          Category_List(),
 
           //Sách nổi bật
           new Padding(

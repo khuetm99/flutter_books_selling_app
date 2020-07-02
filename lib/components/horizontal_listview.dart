@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/models/category.dart';
 import 'package:flutterbooksellingapp/pages/childrenbook.dart';
+import 'package:flutterbooksellingapp/provider/category.dart';
+import 'package:provider/provider.dart';
 import '../pages/product_detail.dart';
 
 //===============================HorizontaList=================================
 class HorizontalList extends StatelessWidget {
-  final Category category;
+  final Single_category category;
 
   HorizontalList({this.category});
 
@@ -19,7 +22,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconthieunhi.jpg',
               image_caption: 'Thiếu Nhi',
             ),
@@ -27,7 +30,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconkinhte.jpg',
               image_caption: 'Kinh Tế',
             ),
@@ -35,7 +38,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconkynangsong.jpg',
               image_caption: 'Kỹ Năng Sống',
             ),
@@ -43,7 +46,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconngoaingu.jpg',
               image_caption: 'Ngoại Ngữ',
             ),
@@ -51,7 +54,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconchinhtriphapluat.jpg',
               image_caption: 'Chính Trị-Pháp Luật',
             ),
@@ -59,7 +62,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconkhoahoccongnghe.jpg',
               image_caption: 'Khoa Học-Công Nghệ',
             ),
@@ -67,7 +70,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconlichsu.jpg',
               image_caption: 'Lịch Sử',
             ),
@@ -75,7 +78,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconmangacomic.png',
               image_caption: 'Manga-Comic',
             ),
@@ -83,7 +86,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconthamkhao.jpg',
               image_caption: 'Tham Khảo',
             ),
@@ -91,7 +94,7 @@ class HorizontalList extends StatelessWidget {
           InkWell(
 //            onTap: () => Navigator.push(context,
 //                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Category(
+            child: Single_category(
               image_location: 'images/icon/iconsgkgt.png',
               image_caption: 'Giáo Khoa-Giáo Trình',
             ),
@@ -102,11 +105,35 @@ class HorizontalList extends StatelessWidget {
   }
 }
 
-class Category extends StatelessWidget {
+class Category_List extends StatefulWidget {
+  @override
+  _Category_ListState createState() => _Category_ListState();
+}
+
+class _Category_ListState extends State<Category_List> {
+  @override
+  Widget build(BuildContext context) {
+    final categoryProvider  =  Provider.of<CategoryProvider>(context);
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categoryProvider.categories.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Single_category(
+            image_caption: categoryProvider.categories[index].name,
+            image_location: categoryProvider.categories[index].image,
+            category_object: categoryProvider.categories[index]
+          );
+        });
+  }
+}
+
+
+class Single_category extends StatelessWidget {
   final String image_location;
   final String image_caption;
+  final Category category_object;
 
-  Category({this.image_location, this.image_caption});
+  Single_category({this.image_location, this.image_caption, this.category_object});
   @override
   Widget build(BuildContext context) {
     return Padding(
