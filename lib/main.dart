@@ -9,7 +9,6 @@ import 'package:flutterbooksellingapp/provider/user.dart';
 import 'components/single_category.dart';
 import 'components/single_category.dart';
 import 'components/single_product.dart';
-import 'package:flutterbooksellingapp/pages/cart.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:provider/provider.dart';
 

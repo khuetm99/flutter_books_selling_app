@@ -92,7 +92,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.product.price}',
+                      '${widget.product.price}đ',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -101,7 +101,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.product.old_price}',
+                      '${widget.product.old_price}đ',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w300,
@@ -200,7 +200,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       : Padding(
                           padding: const EdgeInsets.fromLTRB(28, 12, 28, 12),
                           child: CustomText(
-                            text: "Add $quantity To Cart",
+                            text: "Thêm $quantity Vào Giỏ",
                             color: white,
                             size: 22,
                             weight: FontWeight.w300,
@@ -315,7 +315,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  "Name",
+                  "Còn hàng",
                   style: TextStyle(fontSize: 14),
                 ),
               )

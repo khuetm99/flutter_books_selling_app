@@ -119,7 +119,7 @@ class UserProvider with ChangeNotifier{
         "name": product.name,
         "image": product.image,
         "productId": product.id,
-        "price": int.parse(product.price),
+        "price": product.price,
         "quantity": quantity
       };
 

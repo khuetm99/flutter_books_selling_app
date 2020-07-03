@@ -5,7 +5,6 @@ import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/models/category.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
-import 'package:flutterbooksellingapp/pages/details_page.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +106,7 @@ class CategoryScreen extends StatelessWidget {
               Column(
                 children: productProvider.productsByCategory.map((item) => GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder : (context) => Details( product: item,)));
+                    Navigator.push(context, MaterialPageRoute(builder : (context) => ProductDetails( product: item,)));
                   },
                   child: ProductWidget(product: item,),
                 )).toList(),

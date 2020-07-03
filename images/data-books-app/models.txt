@@ -1,0 +1,22 @@
+PRODUCT :
+
+id
+author
+name
+nxb
+description
+rating
+image
+price
+old_price
+category
+
+
+
+
+
+
+
+
+
+

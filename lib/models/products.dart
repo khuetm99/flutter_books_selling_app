@@ -32,10 +32,11 @@ class Product {
   String image;
   String description;
   String nxb;
-  String price;
+
   String old_price;
   String rating;
 
+  int price;
 
     Product({this.id, this.name,this.author, this.category, this.image, this.description,
       this.nxb, this.rating, this.price, this.old_price});

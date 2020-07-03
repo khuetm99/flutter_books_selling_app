@@ -30,7 +30,7 @@ class OrdersScreen extends StatelessWidget {
             OrderModel _order = user.orders[index];
             return ListTile(
               leading: CustomText(
-                text: "\$${_order.total / 100}",
+                text: "${_order.total}đ",
                 weight: FontWeight.bold,
               ),
               title: Text(_order.description),

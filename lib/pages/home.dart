@@ -11,14 +11,13 @@ import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/category_search.dart';
 import 'package:flutterbooksellingapp/pages/login.dart';
+import 'package:flutterbooksellingapp/pages/new_book.dart';
 import 'package:flutterbooksellingapp/pages/order_page.dart';
 import 'package:flutterbooksellingapp/pages/product_search.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'category_page.dart';
-import 'file:///D:/flutter_books_selling_app/lib/pages/new_book.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
-import 'package:flutterbooksellingapp/pages/cart.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
@@ -45,6 +44,7 @@ class _HomePageState extends State<HomePage> {
           text: "BooksApp",
           color: white,
         ),
+        centerTitle: true,
         actions: <Widget>[
           Stack(
             children: <Widget>[
@@ -108,12 +108,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: white,
 //      =========================================BODY==========================================
       body:
-//      app.isLoading ? Container(
-//        child: Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          children: <Widget>[Loading()],
-//        ),
-//      ) :
+      app.isLoading ? Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Loading()],
+        ),
+      ) :
       SafeArea(
         child: ListView(
           children: <Widget>[
@@ -188,10 +188,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            Divider(),
-            SizedBox(
-              height: 10,
-            ),
 
 //            ===================CAROSEL IMAGE===============
             image_carousel,
@@ -218,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }), ),
-
+                  Divider(),
             //Sách nổi bật
             new Padding(
               padding: const EdgeInsets.all(8.0),
@@ -226,22 +222,21 @@ class _HomePageState extends State<HomePage> {
             ),
 
             Popular_products(),
-
+            Divider(),
 
 //            Sách mới
             new Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text('Sách mới',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
             ),
-            NewBook(),
+              NewBook(),
 
             //New Book
             new Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomText(text :'Sách mua nhiều', size : 22 , weight: FontWeight.w300,),
             ),
-//          NewBook(),
-
+          NewBook(),
 
 
           ],
@@ -351,15 +346,3 @@ class _HomePageState extends State<HomePage> {
 //    );
 //  }
 //}
-
-class ShoppingCart {
-  String orderId;
-  int total;
-
-  ShoppingCart({this.orderId, this.total});
-
-  factory ShoppingCart.fromJson(Map<String, dynamic> json) => ShoppingCart(
-    orderId: json['orderId'] ?? '',
-    total: json["total"] ?? 0,
-  );
-}

@@ -62,10 +62,10 @@ class _CartScreenState extends State<CartScreen> {
                         bottomLeft: Radius.circular(20),
                         topLeft: Radius.circular(20),
                       ),
-                      child: Image.network(
+                      child: Image.asset(
                         user.userModel.cart[index]["image"],
                         height: 120,
-                        width: 140,
+                        width: 120,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -85,7 +85,7 @@ class _CartScreenState extends State<CartScreen> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
                               TextSpan(
-                                  text: "\$${user.userModel.cart[index]["price"] / 100} \n\n",
+                                  text: "${user.userModel.cart[index]["price"] }đ\n\n",
                                   style: TextStyle(
                                       color: black,
                                       fontSize: 18,
@@ -104,6 +104,7 @@ class _CartScreenState extends State<CartScreen> {
                                       fontWeight: FontWeight.w400)),
                             ]),
                           ),
+//                          ============================BUTTON REMOVE==========================
                           IconButton(
                               icon: Icon(
                                 Icons.delete,
@@ -143,13 +144,13 @@ class _CartScreenState extends State<CartScreen> {
               RichText(
                 text: TextSpan(children: [
                   TextSpan(
-                      text: "Total: ",
+                      text: "Tổng cộng: ",
                       style: TextStyle(
                           color: grey,
                           fontSize: 22,
                           fontWeight: FontWeight.w400)),
                   TextSpan(
-                      text: " \$${user.userModel.totalCartPrice / 100}",
+                      text: " ${user.userModel.totalCartPrice }đ",
                       style: TextStyle(
                           color: primary,
                           fontSize: 22,
@@ -159,6 +160,7 @@ class _CartScreenState extends State<CartScreen> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), color: primary),
+//                ================================ BUTTON THANH TOÁN =======================================
                 child: FlatButton(
                     onPressed: () {
                       if(user.userModel.totalCartPrice == 0){
@@ -217,7 +219,7 @@ class _CartScreenState extends State<CartScreen> {
                                             _orderServices.createOrder(
                                                 userId: user.user.uid,
                                                 id: id,
-                                                description: "Some random description",
+                                                description: "Đơn hàng",
                                                 status: "complete",
                                                 totalPrice: user.userModel.totalCartPrice,
                                                 cart: user.userModel.cart
@@ -260,7 +262,6 @@ class _CartScreenState extends State<CartScreen> {
                                             color: red
                                         ),
                                       )
-
                                     ],
                                   ),
                                 ),
@@ -269,7 +270,7 @@ class _CartScreenState extends State<CartScreen> {
                           });
                     },
                     child: Text(
-                       "Check out",
+                       "Thanh toán",
                       style : TextStyle(fontSize: 20,
                       color: white,
                       fontWeight: FontWeight.normal,)
