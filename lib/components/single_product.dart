@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///D:/flutter_books_selling_app/lib/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
+import 'package:flutterbooksellingapp/pages/details_page.dart';
+import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';
 
@@ -9,17 +10,19 @@ class Single_prod extends StatelessWidget {
   final Product bookObject;
 
   Single_prod(
-      {
-      this.bookObject});
+      {this.bookObject});
 
   @override
   Widget build(BuildContext context) {
+    String title = bookObject.name.length > 16.5
+        ? bookObject.name.substring(0, 15) + "..."
+        : bookObject.name;
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductDetails(bookObject: bookObject)));
+                builder: (context) => ProductDetails(product : bookObject)));
       },
       child: Container(
         child: Row(
@@ -43,7 +46,7 @@ class Single_prod extends StatelessWidget {
                   height: 15,
                 ),
                 Text(
-                  bookObject.name,
+                  title,
                   style: TextStyle(
                       fontSize: 20,
                       color: Colors.black87,
@@ -92,19 +95,11 @@ class Single_prod extends StatelessWidget {
 
 
 class Single_prod_Pages extends StatelessWidget {
-  final product_ten;
-  final product_tacgia;
-  final product_picture;
-  final product_giacu;
-  final product_gia;
+
   final Product bookObject;
 
   Single_prod_Pages(
-      {this.product_ten,
-      this.product_tacgia,
-      this.product_picture,
-      this.product_giacu,
-      this.product_gia,
+      {
       this.bookObject});
 
   @override
@@ -116,7 +111,7 @@ class Single_prod_Pages extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      ProductDetails(bookObject: bookObject)));
+                      Details(product: bookObject)));
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -133,14 +128,14 @@ class Single_prod_Pages extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(5.0),
                         child: Image.asset(
-                          product_picture,
+                          bookObject.image,
                           fit: BoxFit.fill,
                         )),
                   ),
                   Padding(padding: EdgeInsets.all(5),),
                   Expanded(
                     child: Text(
-                      product_ten,
+                      bookObject.name,
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black87,
@@ -152,7 +147,7 @@ class Single_prod_Pages extends StatelessWidget {
 //                  ),
                   Expanded(
                     child: Text(
-                      product_tacgia,
+                      bookObject.author,
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black45,
@@ -165,7 +160,7 @@ class Single_prod_Pages extends StatelessWidget {
 //                    height: 12,
 //                  ),
                   Expanded(
-                    child: Text(product_gia + 'đ',
+                    child: Text(bookObject.price + 'đ',
                         style: TextStyle(
                             fontSize: 15,
                             color: Colors.black,
@@ -175,7 +170,7 @@ class Single_prod_Pages extends StatelessWidget {
 //                    height: 12,
 //                  ),
                   Expanded(
-                    child: Text(product_giacu + 'đ',
+                    child: Text(bookObject.old_price + 'đ',
                         style: TextStyle(
                             fontSize: 13,
                             color: Colors.black,

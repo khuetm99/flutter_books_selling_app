@@ -1,22 +1,21 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/components/custom_text.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
-import 'package:flutterbooksellingapp/pages/registration_page.dart';
+import 'package:flutterbooksellingapp/pages/login.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegistrationScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final _key = GlobalKey<ScaffoldState>();
 
   @override
@@ -38,13 +37,34 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset("images/logo.png", width: 120, height: 120,),
+                Image.asset("images/logo.png", width: 100, height: 100,),
               ],
             ),
 
             SizedBox(
               height: 40,
             ),
+
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: grey),
+                    borderRadius: BorderRadius.circular(15)
+                ),
+                child: Padding(padding: EdgeInsets.only(left: 10),
+                  child: TextFormField(
+                    controller: authProvider.name,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Username",
+                        icon: Icon(Icons.person)
+                    ),
+                  ),),
+              ),
+            ),
+
+
             Padding(
               padding: const EdgeInsets.all(12),
               child: Container(
@@ -57,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: authProvider.email,
                     decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Email",
+                        hintText: "Emails",
                         icon: Icon(Icons.email)
                     ),
                   ),),
@@ -82,13 +102,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.all(10),
               child: GestureDetector(
                 onTap: ()async{
-                  if(!await authProvider.signIn()){
+                  print("BTN CLICKED!!!!");
+                  print("BTN CLICKED!!!!");
+                  print("BTN CLICKED!!!!");
+                  print("BTN CLICKED!!!!");
+                  print("BTN CLICKED!!!!");
+                  print("BTN CLICKED!!!!");
+
+                  if(!await authProvider.signUp()){
                     _key.currentState.showSnackBar(
-                        SnackBar(content: Text("Login failed!"))
+                        SnackBar(content: Text("Resgistration failed!"))
                     );
                     return;
                   }
@@ -107,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CustomText(text: "Login", color: white, size: 22,)
+                        CustomText(text: "Resgister", color: white, size: 22,)
                       ],
                     ),),
                 ),
@@ -116,15 +144,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
             GestureDetector(
               onTap: (){
-                changeScreen(context, RegistrationScreen());
+                changeScreen(context, LoginScreen());
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  CustomText(text: "Register here", size: 20,),
+                  CustomText(text: "login here here", size: 20,),
                 ],
               ),
             ),
+
+
           ],
         ),
       ),

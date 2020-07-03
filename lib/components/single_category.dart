@@ -7,128 +7,7 @@ import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:provider/provider.dart';
 import '../pages/product_detail.dart';
 
-//===============================HorizontaList=================================
-class HorizontalList extends StatelessWidget {
-  final Single_category category;
 
-  HorizontalList({this.category});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          InkWell(
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconthieunhi.jpg',
-              image_caption: 'Thiếu Nhi',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconkinhte.jpg',
-              image_caption: 'Kinh Tế',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconkynangsong.jpg',
-              image_caption: 'Kỹ Năng Sống',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconngoaingu.jpg',
-              image_caption: 'Ngoại Ngữ',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconchinhtriphapluat.jpg',
-              image_caption: 'Chính Trị-Pháp Luật',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconkhoahoccongnghe.jpg',
-              image_caption: 'Khoa Học-Công Nghệ',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconlichsu.jpg',
-              image_caption: 'Lịch Sử',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconmangacomic.png',
-              image_caption: 'Manga-Comic',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconthamkhao.jpg',
-              image_caption: 'Tham Khảo',
-            ),
-          ),
-          InkWell(
-//            onTap: () => Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => ChildrenBook())),
-            child: Single_category(
-              image_location: 'images/icon/iconsgkgt.png',
-              image_caption: 'Giáo Khoa-Giáo Trình',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
-class Category_List extends StatefulWidget {
-  @override
-  _Category_ListState createState() => _Category_ListState();
-}
-
-class _Category_ListState extends State<Category_List> {
-  @override
-  Widget build(BuildContext context) {
-    final categoryProvider = Provider.of<CategoryProvider>(context);
-    return Container(
-      padding: EdgeInsets.all(13),
-      height: 200,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: categoryProvider.categories.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Single_category_list(
-                category_object: categoryProvider.categories[index]);
-          }),
-    );
-  }
-}
 
 class Single_category extends StatelessWidget {
   final String image_location;
@@ -175,7 +54,7 @@ class Single_category_list extends StatelessWidget {
         children: <Widget>[
           Container(
             width: 140,
-            height: 160,
+            height: 120,
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),
                 child: Stack(
@@ -193,7 +72,7 @@ class Single_category_list extends StatelessWidget {
 
           Container(
             width: 140,
-            height: 150,
+            height: 120,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
@@ -216,8 +95,8 @@ class Single_category_list extends StatelessWidget {
 
           Positioned.fill(
               child: Align(
-                  alignment: Alignment.center,
-                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w300,))))
+                  alignment: Alignment.bottomCenter,
+                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500,))))
         ],
       ),
     );
