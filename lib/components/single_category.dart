@@ -5,6 +5,7 @@ import 'package:flutterbooksellingapp/models/category.dart';
 import 'package:flutterbooksellingapp/pages/childrenbook.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 import '../pages/product_detail.dart';
 
 
@@ -64,7 +65,7 @@ class Single_category_list extends StatelessWidget {
                       child: Loading(),
                     )),
                     Center(
-                      child: Image.asset( category_object.image, fit: BoxFit.cover,),
+                      child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: category_object.image),
                     )
                   ],
                 )),

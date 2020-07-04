@@ -36,9 +36,9 @@ class CategoryScreen extends StatelessWidget {
                     //                  bottomLeft: Radius.circular(30),
                     //                  bottomRight: Radius.circular(30),
                     //                ),
-                    child: Image.asset(
-                      categoryModel.image,
-//                      placeholder: kTransparentImage,
+                    child: FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: categoryModel.image,
                       height: 160,
                       fit: BoxFit.fill,
                       width: double.infinity,
