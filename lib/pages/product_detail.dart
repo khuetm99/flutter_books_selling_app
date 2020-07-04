@@ -279,7 +279,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  '  Loại sách ',
+                  widget.product.category,
                   style: TextStyle(fontSize: 14),
                 ),
               )

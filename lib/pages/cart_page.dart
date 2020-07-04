@@ -66,11 +66,11 @@ class _CartScreenState extends State<CartScreen> {
                         user.userModel.cart[index]["image"],
                         height: 120,
                         width: 120,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 5,
                     ),
                     Expanded(
                       child: Row(
@@ -82,7 +82,7 @@ class _CartScreenState extends State<CartScreen> {
                                   text: user.userModel.cart[index]["name"] + "\n",
                                   style: TextStyle(
                                       color: black,
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold)),
                               TextSpan(
                                   text: "${user.userModel.cart[index]["price"] }đ\n\n",
@@ -219,7 +219,7 @@ class _CartScreenState extends State<CartScreen> {
                                             _orderServices.createOrder(
                                                 userId: user.user.uid,
                                                 id: id,
-                                                description: "Đơn hàng",
+                                                description: "Đơn hàng của "+user.user.displayName,
                                                 status: "complete",
                                                 totalPrice: user.userModel.totalCartPrice,
                                                 cart: user.userModel.cart

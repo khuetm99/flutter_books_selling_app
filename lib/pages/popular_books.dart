@@ -17,7 +17,7 @@ class _Popular_productsState extends State<Popular_products> {
     List<Product> product_popular_list = productProvider.products;
     return Container(
       padding: EdgeInsets.all(13),
-      height: 370,
+      height: 380,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: product_popular_list.length,

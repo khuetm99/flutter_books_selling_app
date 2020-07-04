@@ -83,13 +83,13 @@ class Single_category_list extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.4),
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.05),
-                    Colors.black.withOpacity(0.025),
+                    Colors.orangeAccent.withOpacity(0.4),
+                    Colors.orangeAccent.withOpacity(0.4),
+                    Colors.orangeAccent.withOpacity(0.4),
+                    Colors.orangeAccent.withOpacity(0.2),
+                    Colors.orangeAccent.withOpacity(0.1),
+                    Colors.orangeAccent.withOpacity(0.05),
+                    Colors.orangeAccent.withOpacity(0.025),
                   ],
                 )),
           ),
@@ -97,7 +97,7 @@ class Single_category_list extends StatelessWidget {
           Positioned.fill(
               child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500,))))
+                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500,))))
         ],
       ),
     );

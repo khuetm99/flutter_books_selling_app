@@ -1,4 +1,6 @@
 import 'package:flutterbooksellingapp/components/single_product.dart';
+import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
+import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import '../helpers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
@@ -21,7 +23,7 @@ class ProductSearchScreen extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.shopping_cart), onPressed: (){})
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: (){changeScreen(context, CartScreen());})
         ],
       ),
       body: productProvider.productsSearched.length < 1? Column(
@@ -50,7 +52,7 @@ class ProductSearchScreen extends StatelessWidget {
                 onTap: ()async{
                   Navigator.push(context, MaterialPageRoute(builder : (context) => ProductDetails(product : productProvider.productsSearched[index])));
                 },
-                child: Single_prod( bookObject : productProvider.productsSearched[index]));
+                child: ProductWidget( product : productProvider.productsSearched[index]));
           }),
     );
   }
