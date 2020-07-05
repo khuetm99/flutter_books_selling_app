@@ -347,7 +347,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget image_carousel = new Container(
       height: 200.0,
-      width: 300.0,
+      width: 250.0,
       child: Carousel(
         boxFit: BoxFit.cover,
         images: [
