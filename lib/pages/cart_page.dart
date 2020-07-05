@@ -8,6 +8,13 @@ import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
+import '../helpers/screen_navigation.dart';
+import '../helpers/screen_navigation.dart';
+import '../helpers/screen_navigation.dart';
+import 'home.dart';
+import 'home.dart';
+import 'home.dart';
+
 class CartScreen extends StatefulWidget {
   @override
   _CartScreenState createState() => _CartScreenState();
@@ -76,33 +83,35 @@ class _CartScreenState extends State<CartScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                  text: user.userModel.cart[index]["name"] + "\n",
-                                  style: TextStyle(
-                                      color: black,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                              TextSpan(
-                                  text: "${user.userModel.cart[index]["price"] }đ\n\n",
-                                  style: TextStyle(
-                                      color: black,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w300)),
-                              TextSpan(
-                                  text: "Quantity: ",
-                                  style: TextStyle(
-                                      color: grey,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)),
-                              TextSpan(
-                                  text: user.userModel.cart[index]["quantity"].toString(),
-                                  style: TextStyle(
-                                      color: primary,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)),
-                            ]),
+                          Expanded(
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                    text: user.userModel.cart[index]["name"] + "\n",
+                                    style: TextStyle(
+                                        color: black,
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.bold)),
+                                TextSpan(
+                                    text: "${user.userModel.cart[index]["price"] }đ\n\n",
+                                    style: TextStyle(
+                                        color: black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w300)),
+                                TextSpan(
+                                    text: "Quantity: ",
+                                    style: TextStyle(
+                                        color: grey,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400)),
+                                TextSpan(
+                                    text: user.userModel.cart[index]["quantity"].toString(),
+                                    style: TextStyle(
+                                        color: primary,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400)),
+                              ]),
+                            ),
                           ),
 //                          ============================BUTTON REMOVE==========================
                           IconButton(
@@ -208,7 +217,7 @@ class _CartScreenState extends State<CartScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('You will be charged \$${user.userModel.totalCartPrice / 100} upon delivery!', textAlign: TextAlign.center,),
+                                      Text('Bạn sẽ thanh toán ${user.userModel.totalCartPrice}đ ', textAlign: TextAlign.center,),
 
                                       SizedBox(
                                         width: 320.0,
@@ -219,7 +228,7 @@ class _CartScreenState extends State<CartScreen> {
                                             _orderServices.createOrder(
                                                 userId: user.user.uid,
                                                 id: id,
-                                                description: "Đơn hàng của "+user.user.displayName,
+                                                description: "Đơn hàng của "+user.userModel.name,
                                                 status: "complete",
                                                 totalPrice: user.userModel.totalCartPrice,
                                                 cart: user.userModel.cart
@@ -230,17 +239,16 @@ class _CartScreenState extends State<CartScreen> {
                                                 user.reloadUserModel();
                                                 print("Item added to cart");
                                                 _key.currentState.showSnackBar(
-                                                    SnackBar(content: Text("Removed from Cart!"))
+                                                    SnackBar(content: Text("Removed from Cart!")),
                                                 );
                                               }else{
                                                 print("ITEM WAS NOT REMOVED");
                                               }
                                             }
                                             _key.currentState.showSnackBar(
-                                                SnackBar(content: Text("Order created!"))
+                                                SnackBar(content: Text("Order created!")),
                                             );
                                             Navigator.pop(context);
-
                                           },
                                           child: Text(
                                             "Accept",

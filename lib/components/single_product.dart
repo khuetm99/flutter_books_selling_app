@@ -128,7 +128,7 @@ class ProductWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
-                child: Image.asset(product.image, fit: BoxFit.fill,),
+                child: Image.asset(product.image, fit: BoxFit.cover,),
               ),
             ),
             Expanded(
@@ -137,30 +137,32 @@ class ProductWidget extends StatelessWidget {
                   SizedBox(height: 5,),
 //                  ========================TÊN SẢN PHẨM==============================
                   Row(
-                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
+//                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          product.name,
-                          style: TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            product.name,
+                            style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.circular(20),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey[300],
-                                    offset: Offset(1, 1),
-                                    blurRadius: 4),
-                              ]),
-                        ),
-                      )
+//                      Padding(
+//                        padding: EdgeInsets.all(8),
+//                        child: Container(
+//                          decoration: BoxDecoration(
+//                              borderRadius:
+//                              BorderRadius.circular(20),
+//                              color: Colors.white,
+//                              boxShadow: [
+//                                BoxShadow(
+//                                    color: Colors.grey[300],
+//                                    offset: Offset(1, 1),
+//                                    blurRadius: 4),
+//                              ]),
+//                        ),
+//                      )
                     ],
                   ),
 //              =====================================TÁC GIẢ=================================
@@ -170,7 +172,7 @@ class ProductWidget extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           product.author,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
                     ],
@@ -184,7 +186,7 @@ class ProductWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 5.0),
                             child: StarRating(
-                              rating: double.parse('4.5'),
+                              rating: double.parse(product.rating),
                               size: 20,
                               color: Colors.yellow.shade700,
                             ),
@@ -205,7 +207,7 @@ class ProductWidget extends StatelessWidget {
                     ],
                   ),
 //                  ========================================PRICE===================================
-                  SizedBox ( height: 10,),
+                  SizedBox ( height: 6,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -218,7 +220,8 @@ class ProductWidget extends StatelessWidget {
                         child: Text( "${ product.old_price } vnđ",style : TextStyle (fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),),
                       ),
                     ],
-                  )
+                  ),
+//                  SizedBox ( height: 10,),
                 ],
               ),
             )

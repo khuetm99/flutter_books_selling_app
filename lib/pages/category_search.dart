@@ -81,12 +81,12 @@ class CategoriesSearchScreen extends StatelessWidget {
             return GestureDetector(
                 onTap: () async {
                   app.changeLoading();
-                  await productProvider.loadProductsByCategory(
+                   productProvider.loadProductsByCategory(
                       categoryName: categoryProvider
                           .searchedCategories[index].name);
                   app.changeLoading();
 
-                  changeScreen(
+                  await  changeScreen(
                       context,
                       CategoryScreen(
                         categoryModel: categoryProvider

@@ -135,7 +135,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   padding: EdgeInsets.all(7),
                 ),
                 StarRating(
-                  rating: double.parse('4.5'),
+                  rating: double.parse(widget.product.rating),
                   size: 20,
                   color: Colors.yellow.shade700,
                 ),
@@ -143,7 +143,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   width: 5,
                 ),
                 Text(
-                  '4.5',
+                  widget.product.rating,
                   style: TextStyle(color: Colors.black38, fontSize: 15),
                 )
               ]),

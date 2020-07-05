@@ -97,7 +97,7 @@ class Single_category_list extends StatelessWidget {
           Positioned.fill(
               child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text(category_object.name,style : TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500,))))
+                  child: Text(category_object.name,style : TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500,))))
         ],
       ),
     );
