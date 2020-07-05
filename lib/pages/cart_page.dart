@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/credit_card_form.dart';
 import 'package:flutterbooksellingapp/helpers/order.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
+import 'package:flutterbooksellingapp/pages/payment.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
+import '../helpers/screen_navigation.dart';
 import '../helpers/screen_navigation.dart';
 import '../helpers/screen_navigation.dart';
 import '../helpers/screen_navigation.dart';
@@ -249,6 +252,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 SnackBar(content: Text("Order created!")),
                                             );
                                             Navigator.pop(context);
+                                            await changeScreen(context, MyCards());
                                           },
                                           child: Text(
                                             "Accept",

@@ -40,6 +40,7 @@ dependencies:
   flutter_typeahead: ^1.8.1
   uuid: ^2.0.4
   badges: ^1.1.1
+  flutter_credit_card: ^0.1.3
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
@@ -77,6 +78,29 @@ flutter:
     - images/newicon/
     - images/products/thieunhi/
     - images/products/kinhte/
+    - images/assets/imgs/
+    - assets/imgs/
+    - images/assets/fonts/Raleway/Raleway-Regular.ttf
+    - images/assets/fonts/Raleway/Raleway-Light.ttf
+    - images/assets/fonts/Raleway/Raleway-Bold.ttf
+    - images/assets/fonts/Montserrat/Montserrat-Regular.ttf
+    - images/assets/fonts/Montserrat/Montserrat-Light.ttf
+    - images/assets/fonts/Montserrat/Montserrat-Bold.ttf
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: images/assets/fonts/Raleway/Raleway-Regular.ttf
+        - asset: images/assets/fonts/Raleway/Raleway-Light.ttf
+          weight: 100
+        - asset: images/assets/fonts/Raleway/Raleway-Bold.ttf
+          weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: images/assets/fonts/Montserrat/Montserrat-Regular.ttf
+        - asset: images/assets/fonts/Montserrat/Montserrat-Light.ttf
+          weight: 100
+        - asset: images/assets/fonts/Montserrat/Montserrat-Bold.ttf
+          weight: 700
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

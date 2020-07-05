@@ -37,7 +37,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset("images/logo.png", width: 100, height: 100,),
+                Image.asset("images/logo.png", width: 120, height: 120,),
               ],
             ),
 
