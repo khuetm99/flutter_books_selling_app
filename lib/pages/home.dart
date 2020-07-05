@@ -27,7 +27,7 @@ import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key : key);
+  HomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
@@ -35,15 +35,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
 //  ===================================NOTIFICATION SETTING======================================
   int _SelectedIndex = 0;
   bool _newNotification = false;
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final TextEditingController _topicController =
-  TextEditingController(text: 'topic');
+      TextEditingController(text: 'topic');
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -75,13 +74,11 @@ class _HomePageState extends State<HomePage> {
     _firebaseMessaging.getToken().then((String token) {
       assert(token != null);
       setState(() {
-       print( "DEVICE TOKEN : \n\n $token");
+        print("DEVICE TOKEN : \n\n $token");
       });
       _firebaseMessaging.subscribeToTopic("matchscore");
     });
-
   }
-
 
 //========================== UI HOMEPAGE=====================================================
   @override
@@ -167,7 +164,7 @@ class _HomePageState extends State<HomePage> {
               title: CustomText(text: "Home"),
             ),
             ListTile(
-              onTap: () async{
+              onTap: () async {
                 await user.getOrders();
                 changeScreen(context, OrdersScreen());
               },
@@ -194,121 +191,144 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: white,
 //      =========================================BODY==========================================
-      body:
-      app.isLoading ? Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Loading()],
-        ),
-      ) :
-      SafeArea(
-        child: ListView(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                  color: primary,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 8, left: 8, right: 8, bottom: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.search,
-                      color: red,
-                    ),
-                    title: TextField(
-                      textInputAction: TextInputAction.search,
-                      onSubmitted: (pattern)async{
-                        app.changeLoading();
-                        if(app.search == SearchBy.PRODUCTS){
-                          await productProvider.search(productName: pattern);
-                          changeScreen(context, ProductSearchScreen());
-                        }else{
-                          await categoryProvider.search(name: pattern);
-                          changeScreen(context, CategoriesSearchScreen());
-                        }
-                        app.changeLoading();
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Tìm kiếm sách và danh mục",
-                        border: InputBorder.none,
+      body: app.isLoading
+          ? Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[Loading()],
+              ),
+            )
+          : SafeArea(
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 8, left: 8, right: 8, bottom: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.search,
+                            color: red,
+                          ),
+                          title: TextField(
+                            textInputAction: TextInputAction.search,
+                            onSubmitted: (pattern) async {
+                              app.changeLoading();
+                              if (app.search == SearchBy.PRODUCTS) {
+                                await productProvider.search(
+                                    productName: pattern);
+                                changeScreen(context, ProductSearchScreen());
+                              } else {
+                                await categoryProvider.search(name: pattern);
+                                changeScreen(context, CategoriesSearchScreen());
+                              }
+                              app.changeLoading();
+                            },
+                            decoration: InputDecoration(
+                              hintText: "Tìm kiếm sách và danh mục",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                CustomText(text: "Tìm kiếm theo:", color: grey, weight: FontWeight.w300,),
-                DropdownButton<String>(
-                  value: app.filterBy,
-                  style: TextStyle(
-                      color: primary,
-                      fontWeight: FontWeight.w300
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      CustomText(
+                        text: "Tìm kiếm theo:",
+                        color: grey,
+                        weight: FontWeight.w300,
+                      ),
+                      DropdownButton<String>(
+                        value: app.filterBy,
+                        style: TextStyle(
+                            color: primary, fontWeight: FontWeight.w300),
+                        icon: Icon(
+                          Icons.filter_list,
+                          color: primary,
+                        ),
+                        elevation: 0,
+                        onChanged: (value) {
+                          if (value == "Products") {
+                            app.changeSearchBy(newSearchBy: SearchBy.PRODUCTS);
+                          } else {
+                            app.changeSearchBy(
+                                newSearchBy: SearchBy.CATEGORIES);
+                          }
+                        },
+                        items: <String>["Products", "Categories"]
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                      ),
+                    ],
                   ),
-                  icon: Icon(Icons.filter_list,
-                    color: primary,),
-                  elevation: 0,
-                  onChanged: (value){
-                    if (value == "Products"){
-                      app.changeSearchBy(newSearchBy: SearchBy.PRODUCTS);
-                    }else{
-                      app.changeSearchBy(newSearchBy: SearchBy.CATEGORIES);
-                    }
-                  },
-                  items: <String>["Products", "Categories"].map<DropdownMenuItem<String>>((String value){
-                    return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value));
-                  }).toList(),
-
-                ),
-              ],
-            ),
 
 //            ===================CAROSEL IMAGE===============
-            image_carousel,
-            // padding widget
-            new Padding(
-              padding: const EdgeInsets.all(9.0),
-              child: Text('Danh mục', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600), ),
-            ),
+                  image_carousel,
+                  // padding widget
+                  new Padding(
+                    padding: const EdgeInsets.all(9.0),
+                    child: Text(
+                      'Danh mục',
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                    ),
+                  ),
 
 //          =====================CATETGORY LISTVIEW=====================
-            Container(
-              height: 100,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categoryProvider.categories.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () async {
-                        await productProvider.loadProductsByCategory( categoryName: categoryProvider.categories[index].name);
-                        Navigator.push(context, MaterialPageRoute(builder : (context) => CategoryScreen( categoryModel: categoryProvider.categories[index],)));
+                  Container(
+                    height: 100,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categoryProvider.categories.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () async {
+                              await productProvider.loadProductsByCategory(
+                                  categoryName:
+                                      categoryProvider.categories[index].name);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryScreen(
+                                            categoryModel: categoryProvider
+                                                .categories[index],
+                                          )));
                             },
-                      child: Single_category_list(
-                        category_object: categoryProvider.categories[index],
-                      ),
-                    );
-                  }), ),
+                            child: Single_category_list(
+                              category_object:
+                                  categoryProvider.categories[index],
+                            ),
+                          );
+                        }),
+                  ),
                   Divider(),
-            //Sách nổi bật
-            new Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Gợi ý cho bạn ',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600), ),
-            ),
+                  //Sách nổi bật
+                  new Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Gợi ý cho bạn ',
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                    ),
+                  ),
 
-            Popular_products(),
+                  Popular_products(),
 
 //            Divider(),
 //
@@ -319,11 +339,9 @@ class _HomePageState extends State<HomePage> {
 //            ),
 //              NewBook(),
 //
-
-
-          ],
-        ),
-      ),
+                ],
+              ),
+            ),
     );
   }
 
@@ -336,18 +354,19 @@ class _HomePageState extends State<HomePage> {
           AssetImage('images/c2.png'),
           AssetImage('images/c3.jpg'),
           AssetImage('images/c4.jpg'),
+          AssetImage('images/c1.jpg'),
+          AssetImage('images/c2.png'),
+          AssetImage('images/c3.jpg'),
+          AssetImage('images/c4.jpg'),
         ],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
         animationDuration: Duration(milliseconds: 2000),
-        autoplayDuration:Duration(milliseconds: 4000) ,
+        autoplayDuration: Duration(milliseconds: 4000),
         dotSize: 2.0,
         indicatorBgPadding: 6.0,
         dotBgColor: Colors.transparent,
       ));
-
-
-
 
 //============================================NOTIFICATION FUNCTION==============================
   Widget _buildDialog(BuildContext context, Item item) {
@@ -370,7 +389,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   void _showItemDialog(Map<String, dynamic> message) {
     showDialog<bool>(
       context: context,
@@ -392,7 +410,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 //================================END STateFull HOMEPAGE=============================
-
 
 Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) {
   if (message.containsKey('data')) {
@@ -444,14 +461,13 @@ class Item {
     final String routeName = '/detail/$itemId';
     return routes.putIfAbsent(
       routeName,
-          () => MaterialPageRoute<void>(
+      () => MaterialPageRoute<void>(
         settings: RouteSettings(name: routeName),
         builder: (BuildContext context) => DetailPage(itemId),
       ),
     );
   }
 }
-
 
 //==================================================NOTIFICATION PAGE===========================================
 class DetailPage extends StatefulWidget {
@@ -460,7 +476,6 @@ class DetailPage extends StatefulWidget {
   @override
   _DetailPageState createState() => _DetailPageState();
 }
-
 
 class _DetailPageState extends State<DetailPage> {
   Item _item;
@@ -480,6 +495,7 @@ class _DetailPageState extends State<DetailPage> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -508,8 +524,11 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Today title:', style: TextStyle(color: Colors.black.withOpacity(0.8))),
-                          Text( _item.title, style: Theme.of(context).textTheme.title)
+                          Text('Today title:',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.8))),
+                          Text(_item.title,
+                              style: Theme.of(context).textTheme.title)
                         ],
                       ),
                     ),
@@ -517,24 +536,19 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Message:', style: TextStyle(color: Colors.black.withOpacity(0.8))),
-                          Text( _item.message, style: Theme.of(context).textTheme.title)
+                          Text('Message:',
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.8))),
+                          Text(_item.message,
+                              style: Theme.of(context).textTheme.title)
                         ],
                       ),
                     ),
                   ],
-                )
-            ),
+                )),
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-
-
-
-
-
-
