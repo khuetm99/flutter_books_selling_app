@@ -16,10 +16,10 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # screenshot
-![](images/Screenshot/login.jpg)
-![](images/Screenshot/home_page.jpg)
-![](images/Screenshot/category_products.jpg)
-![](images/Screenshot/detail.jpg)
-![](images/Screenshot/cart.jpg)
-![](images/Screenshot/orders.jpg)
-![](images/Screenshot/pament_card.jpg)
+![](images/Screenshot/login.jpg 50x20)
+![](images/Screenshot/home_page.jpg 50x20)
+![](images/Screenshot/category_products.jpg 50x20)
+![](images/Screenshot/detail.jpg 50x20)
+![](images/Screenshot/cart.jpg 50x20)
+![](images/Screenshot/orders.jpg 50x20)
+![](images/Screenshot/pament_card.jpg 50x20)
