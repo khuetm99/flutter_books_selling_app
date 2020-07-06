@@ -16,7 +16,7 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # screenshot
-![](images/Screenshot/login.jpg)
+![](images/Screenshot/login.jpg | width=20, height=50)
 ![](images/Screenshot/home_page.jpg)
 ![](images/Screenshot/category_products.jpg)
 ![](images/Screenshot/detail.jpg)
