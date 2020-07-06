@@ -14,7 +14,6 @@ import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/category_search.dart';
 import 'package:flutterbooksellingapp/pages/login.dart';
 import 'package:flutterbooksellingapp/pages/new_book.dart';
-import 'package:flutterbooksellingapp/pages/notification.dart';
 import 'package:flutterbooksellingapp/pages/order_page.dart';
 import 'package:flutterbooksellingapp/pages/product_search.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
@@ -329,21 +328,29 @@ class _HomePageState extends State<HomePage> {
 
   Widget image_carousel = new Container(
       height: 200.0,
-      child: Carousel(
-        boxFit: BoxFit.cover,
-        images: [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/c2.png'),
-          AssetImage('images/c3.jpg'),
-          AssetImage('images/c4.jpg'),
-        ],
-        autoplay: true,
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 2000),
-        autoplayDuration:Duration(milliseconds: 4000) ,
-        dotSize: 2.0,
-        indicatorBgPadding: 6.0,
-        dotBgColor: Colors.transparent,
+      child: Expanded(
+        child: Carousel(
+          boxFit: BoxFit.cover,
+          images: [
+            AssetImage('images/c1.jpg'),
+            AssetImage('images/c3.jpg'),
+            AssetImage('images/c4.jpg'),
+            AssetImage('images/c5.jpg'),
+            AssetImage('images/c6.jpeg'),
+            AssetImage('images/c7.jpg'),
+            AssetImage('images/c8.jpg'),
+            AssetImage('images/c9.png'),
+            AssetImage('images/c11.png'),
+            AssetImage('images/c12.jpg'),
+          ],
+          autoplay: true,
+          animationCurve: Curves.fastOutSlowIn,
+          animationDuration: Duration(milliseconds: 2000),
+          autoplayDuration:Duration(milliseconds: 4000) ,
+          dotSize: 2.0,
+          indicatorBgPadding: 6.0,
+          dotBgColor: Colors.transparent,
+        ),
       ));
 
 
@@ -508,7 +515,7 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Today title:', style: TextStyle(color: Colors.black.withOpacity(0.8))),
+                          Text('Today title:', style: TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.8))),
                           Text( _item.title, style: Theme.of(context).textTheme.title)
                         ],
                       ),
@@ -517,7 +524,7 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Message:', style: TextStyle(color: Colors.black.withOpacity(0.8))),
+                          Text('Message:', style: TextStyle(fontSize: 22,color: Colors.black.withOpacity(0.8))),
                           Text( _item.message, style: Theme.of(context).textTheme.title)
                         ],
                       ),
