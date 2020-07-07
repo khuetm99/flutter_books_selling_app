@@ -9,6 +9,7 @@ import 'package:flutterbooksellingapp/main.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
+import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
 import 'package:flutterbooksellingapp/pages/similar_products.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
@@ -42,6 +43,12 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: white,
         elevation: 0.0,
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              changeScreen(context, HomePage());
+            },
+          ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {

@@ -22,6 +22,7 @@ class OrdersScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             }),
+        centerTitle: true,
       ),
       backgroundColor: white,
       body: ListView.builder(

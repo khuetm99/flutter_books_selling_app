@@ -1,7 +1,9 @@
-//import 'package:flutter/material.dart';
-//import 'package:flutterbooksellingapp/components/single_product.dart';
-//import 'package:flutterbooksellingapp/models/products.dart';
-//
+import 'package:flutter/material.dart';
+import 'package:flutterbooksellingapp/components/single_product.dart';
+import 'package:flutterbooksellingapp/models/products.dart';
+import 'package:flutterbooksellingapp/provider/product.dart';
+import 'package:provider/provider.dart';
+
 //List<Product> product_similar_list = [
 //  Product(
 //    id: "12",
@@ -36,27 +38,29 @@
 //    description: 'a',
 //  ),
 //];
-//
-//class SimilarProducts extends StatefulWidget {
-//  @override
-//  _SimilarProductsState createState() => _SimilarProductsState();
-//}
-//
-//class _SimilarProductsState extends State<SimilarProducts> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Container(
-//      padding: EdgeInsets.all(13),
-//      height: 370,
-//      child: ListView.builder(
-//        scrollDirection: Axis.horizontal,
-//        itemCount: product_similar_list.length,
-//        itemBuilder: (BuildContext context, int index) {
-//          return Single_prod(
-//            bookObject: product_similar_list[index],
-//          );
-//        },
-//      ),
-//    );
-//  }
-//}
+
+class SimilarProducts extends StatefulWidget {
+  @override
+  _SimilarProductsState createState() => _SimilarProductsState();
+}
+
+class _SimilarProductsState extends State<SimilarProducts> {
+  @override
+  Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductProvider>(context);
+    productProvider.loadProductsByCategory(categoryName : 'Nổi Bật');
+    return Container(
+      padding: EdgeInsets.all(13),
+      height: 370,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: productProvider.productsByCategory.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Single_prod(
+            bookObject: productProvider.productsByCategory[index],
+          );
+        },
+      ),
+    );
+  }
+}

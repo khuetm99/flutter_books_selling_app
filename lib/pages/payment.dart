@@ -39,7 +39,7 @@ class _MyCardsPageState extends State<MyCards> {
         title: Text(
           'My Card',
           style: TextStyle(
-            color: Colors.black54,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 21.0,
           ),

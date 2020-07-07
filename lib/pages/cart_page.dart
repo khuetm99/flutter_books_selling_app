@@ -127,7 +127,7 @@ class _CartScreenState extends State<CartScreen> {
                                 bool value = await user.removeFromCart(cartItem: user.userModel.cart[index]);
                                 if(value){
                                   user.reloadUserModel();
-                                  print("Item added to cart");
+                                  print("Item was removed from cart");
                                   _key.currentState.showSnackBar(
                                       SnackBar(content: Text("Removed from Cart!"))
                                   );

@@ -149,7 +149,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  CustomText(text: "login here here", size: 20,),
+                  CustomText(text: "login here ", size: 20,),
                 ],
               ),
             ),

@@ -16,6 +16,7 @@ import 'package:flutterbooksellingapp/pages/login.dart';
 import 'package:flutterbooksellingapp/pages/new_book.dart';
 import 'package:flutterbooksellingapp/pages/order_page.dart';
 import 'package:flutterbooksellingapp/pages/product_search.dart';
+import 'package:flutterbooksellingapp/pages/similar_products.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'category_page.dart';
@@ -309,15 +310,15 @@ class _HomePageState extends State<HomePage> {
 
             Popular_products(),
 
-//            Divider(),
-//
-////            Sách mới
-//            new Padding(
-//              padding: const EdgeInsets.all(8.0),
-//              child: Text('Sách mới',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
-//            ),
-//              NewBook(),
-//
+            Divider(),
+
+//            Sách mới
+            new Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Sách nổi bật',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
+            ),
+              SimilarProducts(),
+
 
 
           ],
@@ -342,6 +343,9 @@ class _HomePageState extends State<HomePage> {
             AssetImage('images/c9.png'),
             AssetImage('images/c11.png'),
             AssetImage('images/c12.jpg'),
+            AssetImage('images/c13.jpg'),
+            AssetImage('images/c14.png'),
+            AssetImage('images/c15.jpg'),
           ],
           autoplay: true,
           animationCurve: Curves.fastOutSlowIn,
@@ -515,7 +519,7 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Today title:', style: TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.8))),
+                          Text('Today title:', style: TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.8), fontWeight: FontWeight.bold)),
                           Text( _item.title, style: Theme.of(context).textTheme.title)
                         ],
                       ),
@@ -524,7 +528,7 @@ class _DetailPageState extends State<DetailPage> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Column(
                         children: <Widget>[
-                          Text('Message:', style: TextStyle(fontSize: 22,color: Colors.black.withOpacity(0.8))),
+                          Text('Message:', style: TextStyle(fontSize: 22,color: Colors.black.withOpacity(0.8), fontWeight: FontWeight.bold)),
                           Text( _item.message, style: Theme.of(context).textTheme.title)
                         ],
                       ),
