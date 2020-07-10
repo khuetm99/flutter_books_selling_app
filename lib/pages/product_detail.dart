@@ -43,6 +43,28 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: white,
         elevation: 0.0,
         actions: <Widget>[
+//          IconButton(
+//            icon: Icon(Icons.favorite_border),
+//            onPressed: () async {
+//              app.changeLoading();
+//              print("All set loading");
+//
+//              bool value = await user.addToFavorite(
+//                  product: widget.product);
+//              if (value) {
+//                print("Item added to favorite");
+//                _key.currentState
+//                    .showSnackBar(SnackBar(content: Text("Added ro Favorite!")));
+//                Icon(Icons.favorite,color: Colors.pink,);
+//                user.reloadUserModel();
+//                app.changeLoading();
+//                return ;
+//              } else {
+//                print("Item NOT added to Favorite");
+//              }
+//              print("lOADING SET TO FALSE");
+//            },
+//          ),
           IconButton(
             icon: Icon(Icons.home),
             onPressed: () {

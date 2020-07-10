@@ -30,6 +30,7 @@ class UserProvider with ChangeNotifier{
   // public variables
   List<OrderModel> orders = [];
 
+
   final formkey = GlobalKey<FormState>();
 
   TextEditingController email = TextEditingController();
@@ -151,6 +152,11 @@ class UserProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  getFavorite()async{
+    orders = await _orderServices.getUserOrders(userId: _user.uid);
+    notifyListeners();
+  }
+
   Future<bool> removeFromCart({Map cartItem})async{
     print("THE PRODUC IS: ${cartItem.toString()}");
 
@@ -161,6 +167,37 @@ class UserProvider with ChangeNotifier{
       print("THE ERROR ${e.toString()}");
       return false;
     }
-
   }
+
+  Future<bool> addToFavorite({Product product})async{
+    print("THE PRODUC IS: ${product.toString()}");
+
+    try{
+      List favorite = _userModel.favorite;
+//      bool itemExists = false;
+      Map favoriteItem ={
+        'id' : product.id,
+        'author' : product.author,
+        'image' : product.image,
+        'description' : product.description,
+        'price' : product.price,
+        'category' : product.category,
+        'rating' : product.rating,
+        'name' : product.name,
+        'nxb' : product.nxb,
+        'old_price' : product.old_price,
+      };
+
+//      if(!itemExists){
+      print("FAVORITE ITEMS ARE: ${favorite.toString()}");
+      _userServicse.addToFavorite(userId: _user.uid, productItem: favoriteItem);
+//      }
+
+      return true;
+    }catch(e){
+      print("THE ERROR ${e.toString()}");
+      return false;
+    }
+  }
+
 }

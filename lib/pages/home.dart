@@ -6,21 +6,19 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutterbooksellingapp/components/custom_text.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/components/single_category.dart';
-import 'package:flutterbooksellingapp/components/single_category.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/category_search.dart';
+import 'package:flutterbooksellingapp/pages/favorite_page.dart';
 import 'package:flutterbooksellingapp/pages/login.dart';
-import 'package:flutterbooksellingapp/pages/new_book.dart';
 import 'package:flutterbooksellingapp/pages/order_page.dart';
 import 'package:flutterbooksellingapp/pages/product_search.dart';
 import 'package:flutterbooksellingapp/pages/similar_products.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'category_page.dart';
-import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
@@ -181,6 +179,13 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.shopping_cart),
               title: CustomText(text: "Cart"),
             ),
+//            ListTile(
+//              onTap: () {
+//                changeScreen(context, FavoriteScreen());
+//              },
+//              leading: Icon(Icons.favorite),
+//              title: CustomText(text: "Favorite"),
+//            ),
             ListTile(
               onTap: () {
                 user.signOut();
@@ -302,23 +307,31 @@ class _HomePageState extends State<HomePage> {
                     );
                   }), ),
                   Divider(),
-            //Sách nổi bật
+            //Tổng hợp sách
             new Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Gợi ý cho bạn ',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600), ),
+              child: Text('Tổng hợp sách ',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600), ),
             ),
 
             Popular_products(),
 
             Divider(),
 
-//            Sách mới
+
+//            Sách hot rating = 5
             new Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Sách nổi bật',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
+              child: Text('Sách hot',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
             ),
-              SimilarProducts(),
+            HotProducts(),
 
+
+//            //            Sách nổi bật
+//            new Padding(
+//              padding: const EdgeInsets.all(8.0),
+//              child: Text('Sách nổi bật',style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),),
+//            ),
+//            SimilarProducts(),
 
 
           ],
@@ -329,32 +342,30 @@ class _HomePageState extends State<HomePage> {
 
   Widget image_carousel = new Container(
       height: 200.0,
-      child: Expanded(
-        child: Carousel(
-          boxFit: BoxFit.cover,
-          images: [
-            AssetImage('images/c1.jpg'),
-            AssetImage('images/c3.jpg'),
-            AssetImage('images/c4.jpg'),
-            AssetImage('images/c5.jpg'),
-            AssetImage('images/c6.jpeg'),
-            AssetImage('images/c7.jpg'),
-            AssetImage('images/c8.jpg'),
-            AssetImage('images/c9.png'),
-            AssetImage('images/c11.png'),
-            AssetImage('images/c12.jpg'),
-            AssetImage('images/c13.jpg'),
-            AssetImage('images/c14.png'),
-            AssetImage('images/c15.jpg'),
-          ],
-          autoplay: true,
-          animationCurve: Curves.fastOutSlowIn,
-          animationDuration: Duration(milliseconds: 2000),
-          autoplayDuration:Duration(milliseconds: 4000) ,
-          dotSize: 2.0,
-          indicatorBgPadding: 6.0,
-          dotBgColor: Colors.transparent,
-        ),
+      child: Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          AssetImage('images/c1.jpg'),
+          AssetImage('images/c3.jpg'),
+          AssetImage('images/c4.jpg'),
+          AssetImage('images/c5.jpg'),
+          AssetImage('images/c6.jpeg'),
+          AssetImage('images/c7.jpg'),
+          AssetImage('images/c8.jpg'),
+          AssetImage('images/c9.png'),
+          AssetImage('images/c11.png'),
+          AssetImage('images/c12.jpg'),
+          AssetImage('images/c13.jpg'),
+          AssetImage('images/c14.png'),
+          AssetImage('images/c15.jpg'),
+        ],
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 2000),
+        autoplayDuration:Duration(milliseconds: 4000) ,
+        dotSize: 2.0,
+        indicatorBgPadding: 6.0,
+        dotBgColor: Colors.transparent,
       ));
 
 

@@ -15,10 +15,36 @@ class ProductServices {
         return products;
       });
 
+  Future<List<Product>> getProductsById({String id}) async =>
+      _firestore
+          .collection(collection)
+          .where("id", isEqualTo: id)
+          .getDocuments()
+          .then((result) {
+        List<Product> products = [];
+        for (DocumentSnapshot order in result.documents) {
+          products.add(Product.fromSnapshot(order));
+        }
+        return products;
+      });
+
   Future<List<Product>> getProductsOfCategory({String category}) async =>
       _firestore
           .collection(collection)
           .where("category", isEqualTo: category)
+          .getDocuments()
+          .then((result) {
+        List<Product> products = [];
+        for (DocumentSnapshot product in result.documents) {
+          products.add(Product.fromSnapshot(product));
+        }
+        return products;
+      });
+
+  Future<List<Product>> getProductsOfRating({String rating}) async =>
+      _firestore
+          .collection(collection)
+          .where("rating", isEqualTo: rating)
           .getDocuments()
           .then((result) {
         List<Product> products = [];
@@ -45,5 +71,6 @@ class ProductServices {
       return products;
     });
   }
+
 }
 

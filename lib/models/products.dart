@@ -55,4 +55,17 @@ class Product {
     old_price = snapshot.data[OLD_PRICE];
   }
 
+  Map toMap() => {
+    ID : id,
+    AUTHOR : author,
+    IMAGE : image,
+    DESCRIPTION : description,
+    PRICE : price,
+    CATEGORY : category,
+    RATING : rating,
+    NAME : name,
+    NXB : nxb,
+    OLD_PRICE : old_price,
+  };
+
 }

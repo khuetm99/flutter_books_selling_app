@@ -31,6 +31,22 @@ class UserServices{
     });
   }
 
+  void addToFavorite({String userId, Map productItem}){
+    print("THE USER ID IS: $userId");
+    print("Favorite product items are: ${productItem.toString()}");
+    _firestore.collection(collection).document(userId).updateData({
+      "favorite": FieldValue.arrayUnion([productItem])
+    });
+  }
+
+  void removeFromFavorite({String userId, Map productItem}){
+    print("THE USER ID IS: $userId");
+    print("Favorite product items are: ${productItem.toString()}");
+    _firestore.collection(collection).document(userId).updateData({
+      "favorite": FieldValue.arrayRemove([productItem])
+    });
+  }
+
 
   Future<UserModel> getUserById(String id) => _firestore.collection(collection).document(id).get().then((doc){
     return UserModel.fromSnapshot(doc);
