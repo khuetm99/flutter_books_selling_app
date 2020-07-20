@@ -5,7 +5,7 @@ class Category {
   static const NAME = "name";
   static const IMAGE = "image";
 
-  int id;
+  String id;
   String name;
   String image;
 

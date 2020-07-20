@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
+import 'package:flutterbooksellingapp/components/shimmer.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Single_prod extends StatelessWidget {
   final Product bookObject;
@@ -33,13 +35,27 @@ class Single_prod extends StatelessWidget {
                 Container(
                   height: 220,
                   width: 150,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(5.0),
-                      child: Image.asset(
-                        bookObject.image,
-                        fit: BoxFit.cover,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned.fill(child: Align(
+                            alignment: Alignment.center,
+                            child:  Shimmer.fromColors(
+                              highlightColor: Colors.white,
+                              baseColor: Colors.grey[300],
+                              child: ShimmerLayoutSingleProd(),
+                              period: Duration(milliseconds: 800),
+                            ),
+                          )),
+                          Image.network(
+                            bookObject.image,
+                            height: 220,
+                            width: 150,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
                       )),
                 ),
                 SizedBox(
@@ -128,7 +144,20 @@ class ProductWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   topLeft: Radius.circular(20),
                 ),
-                child: Image.asset(product.image, fit: BoxFit.cover,),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned.fill(child: Align(
+                      alignment: Alignment.center,
+                      child:  Shimmer.fromColors(
+                        highlightColor: Colors.white,
+                        baseColor: Colors.grey[300],
+                        child: ShimmerLayoutProductWidget(),
+                        period: Duration(milliseconds: 800),
+                      ),
+                    )),
+                    Image.network(product.image, height : 140, width: 150, fit: BoxFit.cover,),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -192,7 +221,7 @@ class ProductWidget extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.fromLTRB(5.0, 2.0, 0.0,0.0),
                             child: Text(
                                 product.rating.toString(),
                                 style : TextStyle(color: Colors.grey,

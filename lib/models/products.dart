@@ -12,6 +12,8 @@ class Product {
   static const OLD_PRICE = "old_price";
   static const DESCRIPTION = "description";
   static const CATEGORY = "category";
+  static const FAVORITE = "favorite";
+
 
 //  String _id;
 //  String _name;
@@ -37,9 +39,10 @@ class Product {
   String rating;
 
   int price;
+  bool favorite;
 
     Product({this.id, this.name,this.author, this.category, this.image, this.description,
-      this.nxb, this.rating, this.price, this.old_price});
+      this.nxb, this.rating, this.price, this.old_price, this.favorite});
 
 
   Product.fromSnapshot(DocumentSnapshot snapshot) {
@@ -53,6 +56,7 @@ class Product {
     name = snapshot.data[NAME];
     nxb = snapshot.data[NXB];
     old_price = snapshot.data[OLD_PRICE];
+    favorite = snapshot.data[FAVORITE];
   }
 
   Map toMap() => {

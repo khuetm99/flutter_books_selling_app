@@ -72,7 +72,7 @@ class _CartScreenState extends State<CartScreen> {
                         bottomLeft: Radius.circular(20),
                         topLeft: Radius.circular(20),
                       ),
-                      child: Image.asset(
+                      child: Image.network(
                         user.userModel.cart[index]["image"],
                         height: 120,
                         width: 120,
@@ -252,7 +252,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 SnackBar(content: Text("Order created!")),
                                             );
                                             Navigator.pop(context);
-                                            await changeScreen(context, MyCards());
+                                            await changeScreen(context, PaymentButtonScreen());
                                           },
                                           child: Text(
                                             "Accept",

@@ -5,8 +5,6 @@ import 'package:flutterbooksellingapp/components/custom_text.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
-import 'package:flutterbooksellingapp/main.dart';
-import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
@@ -16,6 +14,10 @@ import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import '../provider/product.dart';
 import 'package:provider/provider.dart';
+
+import 'home.dart';
+import 'payment.dart';
+
 
 class ProductDetails extends StatefulWidget {
   final Product product;
@@ -88,7 +90,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: GridTile(
               child: Container(
                 color: Colors.white,
-                child: Image.asset(widget.product.image),
+                child: Image.network(widget.product.image),
               ),
               footer: Container(
                 color: Colors.white54,
@@ -174,7 +176,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Text(
                   widget.product.rating,
                   style: TextStyle(color: Colors.black38, fontSize: 15),
-                )
+                ),
               ]),
             ],
           ),

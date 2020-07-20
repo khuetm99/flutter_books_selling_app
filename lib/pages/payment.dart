@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutterbooksellingapp/components/CustomShapeClipper.dart';
+import '../components/custom_text.dart';
+import '../helpers/screen_navigation.dart';
 import '../helpers/style.dart';
 import 'home.dart';
 
@@ -18,6 +20,187 @@ class IconImgs {
   static const String freeze = "images/assets/imgs/freeze.png";
   static const String unlock = "images/assets/imgs/unlock.png";
   static const String secret = "images/assets/imgs/secret.png";
+}
+
+class PaymentButtonScreen extends StatelessWidget {
+  Color firstColor = Color(0xFFF47D15);
+  Color secondColor = Color(0xFFEF772C);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Color(0xFFEF772C),
+        elevation: 0.0,
+        title: Text(
+          "Payment",
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
+      body: SafeArea(
+        child: Column(children: <Widget>[
+          Stack(
+            children: <Widget>[
+              ClipPath(
+                clipper: CustomShapeClipper(),
+                child: Container(
+                  height: 350,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [firstColor, secondColor],
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MomoScreen()));
+            },
+            child: Container(
+              decoration: BoxDecoration(color: Colors.teal, borderRadius: BorderRadius.circular(20)),
+              child:Padding(
+                padding: const EdgeInsets.fromLTRB(28, 12, 28, 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 35,
+                      height: 25,
+                      child: Image.asset(
+                        'images/icon/momo.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: 20,),
+                    CustomText(
+                      text: "Thanh toán qua momo",
+                      color: white,
+                      size: 18,
+                      weight: FontWeight.w300,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 25,),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MyCards()));
+            },
+            child: Container(
+              decoration: BoxDecoration(color: Colors.teal, borderRadius: BorderRadius.circular(20)),
+              child:Padding(
+                padding: const EdgeInsets.fromLTRB(28, 12, 28, 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      width: 35,
+                      height: 25,
+                        child: Image.asset(
+                          'images/icon/mastercard.png',
+                          fit: BoxFit.cover,
+                        ),
+                    ),
+                    SizedBox(width: 20,),
+                    CustomText(
+                      text: "Thanh toán bằng card",
+                      color: white,
+                      size: 18,
+                      weight: FontWeight.w300,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class MomoScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Color firstColor = Colors.orange.shade200;
+    Color secondColor = Colors.orange.shade400;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: white),
+        title: Text(
+          'My MoMo',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 21.0,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: white,
+        elevation: 0.5,
+        leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            }),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    width: 350,
+                    height: 350,
+                    child: Image.asset('images/payment/momovector.png', fit: BoxFit.fill),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                         "Thank you for purchasing our product ^^",
+                      textAlign: TextAlign.center,
+                      style : TextStyle( color: Colors.teal,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,)
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 
@@ -48,9 +231,13 @@ class _MyCardsPageState extends State<MyCards> {
         backgroundColor: white,
         elevation: 0.5,
         leading: IconButton(
-            icon: Icon(Icons.close, color: Colors.black,),
+            icon: Icon(
+              Icons.close,
+              color: Colors.black,
+            ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
             }),
       ),
       body: SingleChildScrollView(
@@ -382,6 +569,7 @@ class HistoryListTile extends StatelessWidget {
       transactionAmount,
       transactionIcon;
   final GestureTapCallback onTap;
+
   const HistoryListTile({
     Key key,
     this.iconColor,
@@ -420,11 +608,13 @@ class CustomRoundedButton extends StatelessWidget {
   final Color color;
   final String buttonText;
   final GestureTapCallback onTap;
+
   CustomRoundedButton({
     @required this.color,
     @required this.buttonText,
     @required this.onTap,
   });
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -451,6 +641,7 @@ class CustomIconButton extends StatelessWidget {
   final String buttonTitle, buttonImg;
   final GestureTapCallback onTap;
   final Color circleColor;
+
   const CustomIconButton({
     @required this.circleColor,
     @required this.buttonTitle,
@@ -589,7 +780,9 @@ class CreditCardContainer extends StatelessWidget {
 
 class CustomContainer extends StatelessWidget {
   final Widget child;
+
   CustomContainer({@required this.child});
+
   @override
   Widget build(BuildContext context) {
     return Container(

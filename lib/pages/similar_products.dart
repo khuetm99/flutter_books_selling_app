@@ -44,7 +44,7 @@ class _HotProductsState extends State<HotProducts> {
     productProvider.loadProductsByRating(rating : '5');
     return Container(
       padding: EdgeInsets.all(13),
-      height: 370,
+      height: 390,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: productProvider.productsByRating.length,

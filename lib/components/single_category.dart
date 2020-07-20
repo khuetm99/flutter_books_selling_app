@@ -2,11 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/models/category.dart';
-import 'package:flutterbooksellingapp/pages/childrenbook.dart';
-import 'package:flutterbooksellingapp/provider/category.dart';
-import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
-import '../pages/product_detail.dart';
+
 
 
 
