@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterbooksellingapp/models/cart_item.dart';
+import 'package:flutterbooksellingapp/models/products.dart';
 
 class UserModel{
   static const ID = "id";
@@ -26,7 +27,9 @@ class UserModel{
 //  public variable
   List cart;
   int totalCartPrice;
-  List favorite;
+  int totalQuantity= 0;
+  List<Product> favorite;
+
 
   UserModel.fromSnapshot(DocumentSnapshot snapshot){
     _name = snapshot.data[NAME];
@@ -36,7 +39,26 @@ class UserModel{
     cart = snapshot.data[CART] ?? [];
     favorite = snapshot.data[FAVORITE] ?? [];
     totalCartPrice = snapshot.data[CART] == null ? 0 :getTotalPrice(cart: snapshot.data[CART]);
+    totalQuantity = snapshot.data[CART] == null ? 0 : getTotalQuantity(cart: snapshot.data[CART]);
   }
+
+  int getTotalQuantity({List cart}){
+    if(cart == null){
+      return 0;
+    }
+    for(Map cartItem in cart){
+      _quantitySum += cartItem["quantity"];
+    }
+
+    int total = _quantitySum;
+
+    print("THE TOTAL QUANTITY IS $total");
+    print("THE TOTAL QUANTITY IS $total");
+
+
+    return total;
+  }
+
 
   int getTotalPrice({List cart}){
     if(cart == null){

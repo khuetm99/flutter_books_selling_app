@@ -6,10 +6,12 @@ import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:flutterbooksellingapp/pages/registration_page.dart';
+import 'package:flutterbooksellingapp/pages/splash_screen.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'package:provider/provider.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -24,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
     final authProvider = Provider.of<UserProvider>(context);
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       key: _key,
@@ -38,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset("images/logo.png", width: 140, height: 140,),
+                Image.asset("images/logo/logo_book.png", width: 200, height: 200,),
               ],
             ),
 
@@ -85,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: GestureDetector(
-                onTap: ()async{
+                onTap: () async{
                   if(!await authProvider.signIn()){
                     _key.currentState.showSnackBar(
                         SnackBar(content: Text("Login failed!"))
@@ -94,25 +98,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                   categoryProvider.loadCategories();
                   productProvider.loadProducts();
+                  authProvider.userModel.getTotalQuantity();
                   authProvider.clearController();
-                  changeScreenReplacement(context, HomePage());
+                  changeScreenReplacement(context, SpashScreenPage());
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: red,
-                      border: Border.all(color: grey),
-                      borderRadius: BorderRadius.circular(15)
+                    borderRadius: BorderRadius.circular(6),
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color(0xffff5f6d),
+                        Color(0xffff5f6d),
+                        Color(0xffffc371),
+                      ],
+                    ),
                   ),
                   child: Padding(padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CustomText(text: "Login", color: white, size: 22,)
+                        CustomText(text: "Login", color: white, size: 22, weight: FontWeight.w600,)
                       ],
                     ),),
                 ),
               ),
             ),
+
+            SizedBox(height: screenHeight/3.2,),
 
             GestureDetector(
               onTap: (){
@@ -121,7 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  CustomText(text: "Register here", size: 20,),
+                  Text("I'm a new user.",style: TextStyle(fontSize : 19, fontWeight: FontWeight.bold),),
+                  CustomText(text: " Register here", size: 19, weight: FontWeight.bold, color: Color(0xffff5f6d)),
                 ],
               ),
             ),

@@ -48,53 +48,54 @@ class Single_category_list extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(6),
-      child: Stack(
+      child: Column(
         children: <Widget>[
-          Container(
-            width: 140,
-            height: 120,
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned.fill(child: Align(
-                      alignment: Alignment.center,
-                      child: Loading(),
+          Stack(
+            children: <Widget>[
+              Container(
+                width: 140,
+                height: 120,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned.fill(child: Align(
+                          alignment: Alignment.center,
+                          child: Loading(),
+                        )),
+                        Center(
+                          child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: category_object.image),
+                        )
+                      ],
                     )),
-                    Center(
-                      child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: category_object.image),
-                    )
-                  ],
-                )),
-          ),
+              ),
 
-          Container(
-            width: 140,
-            height: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                ),
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.orangeAccent.withOpacity(0.4),
-                    Colors.orangeAccent.withOpacity(0.4),
-                    Colors.orangeAccent.withOpacity(0.4),
-                    Colors.orangeAccent.withOpacity(0.2),
-                    Colors.orangeAccent.withOpacity(0.1),
-                    Colors.orangeAccent.withOpacity(0.05),
-                    Colors.orangeAccent.withOpacity(0.025),
-                  ],
-                )),
+              Container(
+                width: 140,
+                height: 120,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.orangeAccent.withOpacity(0.4),
+                        Colors.orangeAccent.withOpacity(0.4),
+                        Colors.orangeAccent.withOpacity(0.4),
+                        Colors.orangeAccent.withOpacity(0.2),
+                        Colors.orangeAccent.withOpacity(0.1),
+                        Colors.orangeAccent.withOpacity(0.05),
+                        Colors.orangeAccent.withOpacity(0.025),
+                      ],
+                    )),
+              ),
+            ],
           ),
-
-          Positioned.fill(
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(category_object.name,style : TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500,))))
+          SizedBox(height: 3,),
+          Text(category_object.name,style : TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500,))
         ],
       ),
     );

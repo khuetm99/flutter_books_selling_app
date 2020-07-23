@@ -23,6 +23,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final authProvider = Provider.of<UserProvider>(context);
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       key: _key,
@@ -37,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset("images/logo.png", width: 120, height: 120,),
+                Image.asset("images/logo/logo_book.png", width: 200, height: 200,),
               ],
             ),
 
@@ -127,20 +129,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: red,
-                      border: Border.all(color: grey),
-                      borderRadius: BorderRadius.circular(15)
+                    borderRadius: BorderRadius.circular(6),
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color(0xffff5f6d),
+                        Color(0xffff5f6d),
+                        Color(0xffffc371),
+                      ],
+                    ),
                   ),
                   child: Padding(padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CustomText(text: "Resgister", color: white, size: 22,)
+                        CustomText(text: "Resgister", color: white, size: 22, weight: FontWeight.w600)
                       ],
                     ),),
                 ),
               ),
             ),
+
+            SizedBox(height: screenHeight/4.3,),
 
             GestureDetector(
               onTap: (){
@@ -149,12 +160,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  CustomText(text: "login here ", size: 20,),
+                  Text("I'm already a member.",style: TextStyle(fontSize : 19, fontWeight: FontWeight.bold),),
+                  CustomText(text: " Sign in", size: 19, weight: FontWeight.bold, color: Color(0xffff5f6d)),
                 ],
               ),
             ),
-
-
           ],
         ),
       ),

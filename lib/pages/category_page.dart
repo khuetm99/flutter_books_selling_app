@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/models/category.dart';
-import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:provider/provider.dart';

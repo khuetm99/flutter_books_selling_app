@@ -33,7 +33,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 //  ===================================NOTIFICATION SETTING======================================
-  int _SelectedIndex = 0;
   bool _newNotification = false;
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final TextEditingController _topicController =
@@ -75,7 +74,6 @@ class _HomePageState extends State<HomePage> {
       });
       _firebaseMessaging.subscribeToTopic("matchscore");
     });
-
   }
 
 
@@ -86,6 +84,8 @@ class _HomePageState extends State<HomePage> {
     final app = Provider.of<AppProvider>(context);
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
+    int totalquantity = 0;
+    totalquantity = user.userModel.totalQuantity;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: white),
@@ -128,15 +128,22 @@ class _HomePageState extends State<HomePage> {
 //              ),
 //            ],
 //          ),
-          Stack(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: () {
-                  changeScreen(context, CartScreen());
-                },
+          Badge(
+            badgeColor: Colors.yellow[900],
+            position: BadgePosition.topRight(top: 0, right: 3),
+            badgeContent: Text(
+              '${totalquantity.toString()}',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-            ],
+            ),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                changeScreen(context, CartScreen());
+              },
+            ),
           ),
         ],
       ),
@@ -289,7 +296,7 @@ class _HomePageState extends State<HomePage> {
 
 //          =====================CATETGORY LISTVIEW=====================
             Container(
-              height: 100,
+              height: 160,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categoryProvider.categories.length,
@@ -305,6 +312,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   }), ),
                   Divider(),
+
             //Tổng hợp sách
             new Padding(
               padding: const EdgeInsets.all(8.0),
@@ -389,6 +397,7 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
+
 
 
   void _showItemDialog(Map<String, dynamic> message) {

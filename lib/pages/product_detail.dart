@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
@@ -7,6 +8,7 @@ import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
+import 'package:flutterbooksellingapp/pages/favorite_page.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
 import 'package:flutterbooksellingapp/pages/similar_products.dart';
@@ -57,7 +59,6 @@ class _ProductDetailsState extends State<ProductDetails> {
 //                print("Item added to favorite");
 //                _key.currentState
 //                    .showSnackBar(SnackBar(content: Text("Added ro Favorite!")));
-//                Icon(Icons.favorite,color: Colors.pink,);
 //                user.reloadUserModel();
 //                app.changeLoading();
 //                return ;
@@ -67,21 +68,36 @@ class _ProductDetailsState extends State<ProductDetails> {
 //              print("lOADING SET TO FALSE");
 //            },
 //          ),
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              changeScreen(context, HomePage());
-            },
+          Container(
+            child: IconButton(
+              icon: Icon(Icons.home),
+              onPressed: () {
+                changeScreen(context, HomePage());
+              },
+            ),
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              changeScreen(context, CartScreen());
-            },
+          Container(
+            margin: EdgeInsets.only(right: 2),
+            child: Badge(
+              position: BadgePosition.topRight(top: 0, right: 3),
+              badgeContent: Text(
+                '${user.userModel.totalQuantity.toString()}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  changeScreen(context, CartScreen());
+                },
+              ),
+            ),
           ),
 
         ],
-        leading: IconButton(icon: Icon(Icons.close), onPressed: (){Navigator.pop(context);}),
+        leading: Container(child: IconButton(icon: Icon(Icons.close), onPressed: (){Navigator.pop(context);})),
       ),
       body: SafeArea(
          child: app.isLoading ? Loading() :  ListView(children: <Widget>[
@@ -372,4 +388,5 @@ class _ProductDetailsState extends State<ProductDetails> {
       ),
     );
   }
+
 }

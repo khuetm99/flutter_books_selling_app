@@ -163,7 +163,6 @@ class ProductWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 5,),
 //                  ========================TÊN SẢN PHẨM==============================
                   Row(
 //                    mainAxisAlignment:MainAxisAlignment.spaceBetween,

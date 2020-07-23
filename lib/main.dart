@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/pages/login.dart';
+import 'package:flutterbooksellingapp/pages/splash_screen.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/category.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
-import 'components/single_category.dart';
-import 'components/single_category.dart';
-import 'components/single_product.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +40,7 @@ class ScreensController extends StatelessWidget {
       case Status.Authenticating:
         return LoginScreen();
       case Status.Authenticated:
-        return HomePage();
+        return SpashScreenPage();
       default:
         return LoginScreen();
     }
