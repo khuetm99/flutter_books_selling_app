@@ -72,7 +72,6 @@ class UserProvider with ChangeNotifier {
           'name': name.text,
           'email': email.text,
           'uid': result.user.uid,
-          "likedFood": [],
         });
       });
       return true;

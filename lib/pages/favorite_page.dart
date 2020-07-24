@@ -66,7 +66,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
-                        Icons.search,
+                        Icons.favorite_border,
                         color: Colors.grey,
                         size: 30,
                       ),
