@@ -8,7 +8,7 @@ class UserModel{
   static const EMAIL = "email";
   static const STRIPE_ID = "stripeId";
   static const CART = "cart";
-  static const FAVORITE = "favorite";
+
 
   String _name;
   String _email;
@@ -37,7 +37,6 @@ class UserModel{
     _id = snapshot.data[ID];
     _stripeId = snapshot.data[STRIPE_ID];
     cart = snapshot.data[CART] ?? [];
-    favorite = snapshot.data[FAVORITE] ?? [];
     totalCartPrice = snapshot.data[CART] == null ? 0 :getTotalPrice(cart: snapshot.data[CART]);
     totalQuantity = snapshot.data[CART] == null ? 0 : getTotalQuantity(cart: snapshot.data[CART]);
   }

@@ -84,7 +84,7 @@ class Single_prod extends StatelessWidget {
                   height: 12,
                 ),
                 Text(
-                '${bookObject.price}đ',
+                '${bookObject.price.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}đ',
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
@@ -92,7 +92,7 @@ class Single_prod extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
-                Text(bookObject.old_price + 'đ',
+                Text(bookObject.old_price.replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') + 'đ',
                     style: TextStyle(
                         fontSize: 13,
                         color: Colors.black,
@@ -241,11 +241,11 @@ class ProductWidget extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(left:8.0),
-                        child: Text( "${ product.price } vnđ",style : TextStyle (color : Colors.deepOrangeAccent, fontWeight: FontWeight.bold, fontSize: 18),),
+                        child: Text( "${ product.price.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') } vnđ",style : TextStyle (color : Colors.deepOrangeAccent, fontWeight: FontWeight.bold, fontSize: 18),),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right:8.0),
-                        child: Text( "${ product.old_price } vnđ",style : TextStyle (fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),),
+                        child: Text( "${ product.old_price.replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') } vnđ",style : TextStyle (fontWeight: FontWeight.w400, decoration: TextDecoration.lineThrough),),
                       ),
                     ],
                   ),

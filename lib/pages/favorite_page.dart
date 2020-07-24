@@ -1,11 +1,10 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
-import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'package:provider/provider.dart';
 
@@ -21,8 +20,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     final app = Provider.of<AppProvider>(context);
-    final product = Provider.of<ProductProvider>(context);
-
+    user.getFavorites();
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
@@ -39,14 +37,28 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           elevation: 0.0,
           centerTitle: true,
           actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: () {
-                  changeScreen(context, CartScreen());
-                })
+            Container(
+              margin: EdgeInsets.only(right: 2),
+              child: Badge(
+                position: BadgePosition.topRight(top: 0, right: 3),
+                badgeContent: Text(
+                  '${user.userModel.totalQuantity.toString()}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    changeScreen(context, CartScreen());
+                  },
+                ),
+              ),
+            ),
           ],
         ),
-        body: user.userModel.favorite.length < 1
+        body: user.favorites.length < 1
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -66,7 +78,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text("No products Found",
+                      Text("No products like",
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w300,
@@ -77,8 +89,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ],
               )
             : Column(
-                children: user.userModel.favorite
-                    .map((item) => GestureDetector(
+                children: user.favorites.map((item) => GestureDetector(
                           onTap: () {
                             Navigator.push(
                                 context,

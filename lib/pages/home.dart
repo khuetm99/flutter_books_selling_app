@@ -10,6 +10,7 @@ import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/category_search.dart';
+import 'package:flutterbooksellingapp/pages/favorite_page.dart';
 import 'package:flutterbooksellingapp/pages/login.dart';
 import 'package:flutterbooksellingapp/pages/order_page.dart';
 import 'package:flutterbooksellingapp/pages/product_search.dart';
@@ -184,13 +185,13 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.shopping_cart),
               title: CustomText(text: "Cart"),
             ),
-//            ListTile(
-//              onTap: () {
-//                changeScreen(context, FavoriteScreen());
-//              },
-//              leading: Icon(Icons.favorite),
-//              title: CustomText(text: "Favorite"),
-//            ),
+            ListTile(
+              onTap: () {
+                changeScreen(context, FavoriteScreen());
+              },
+              leading: Icon(Icons.favorite),
+              title: CustomText(text: "Favorite"),
+            ),
             ListTile(
               onTap: () {
                 user.signOut();

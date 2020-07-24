@@ -8,17 +8,14 @@ import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
-import 'package:flutterbooksellingapp/pages/favorite_page.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
-import 'package:flutterbooksellingapp/pages/similar_products.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
-import '../provider/product.dart';
 import 'package:provider/provider.dart';
 
 import 'home.dart';
-import 'payment.dart';
+
 
 
 class ProductDetails extends StatefulWidget {
@@ -36,10 +33,26 @@ class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
   final _key = GlobalKey<ScaffoldState>();
 
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     final app = Provider.of<AppProvider>(context);
+    user.getFavorites();
+
+    bool checkFavorite() {
+      for(int i =0 ; i < user.favorites.length; i++)
+        {
+          if(widget.product.id == user.favorites[i].id)
+          {
+              debugPrint(i.toString());
+              return true;
+          }
+        }
+       return false;
+    }
+
+
     return Scaffold(
       key: _key,
       appBar: AppBar(
@@ -47,27 +60,6 @@ class _ProductDetailsState extends State<ProductDetails> {
         backgroundColor: white,
         elevation: 0.0,
         actions: <Widget>[
-//          IconButton(
-//            icon: Icon(Icons.favorite_border),
-//            onPressed: () async {
-//              app.changeLoading();
-//              print("All set loading");
-//
-//              bool value = await user.addToFavorite(
-//                  product: widget.product);
-//              if (value) {
-//                print("Item added to favorite");
-//                _key.currentState
-//                    .showSnackBar(SnackBar(content: Text("Added ro Favorite!")));
-//                user.reloadUserModel();
-//                app.changeLoading();
-//                return ;
-//              } else {
-//                print("Item NOT added to Favorite");
-//              }
-//              print("lOADING SET TO FALSE");
-//            },
-//          ),
           Container(
             child: IconButton(
               icon: Icon(Icons.home),
@@ -76,6 +68,45 @@ class _ProductDetailsState extends State<ProductDetails> {
               },
             ),
           ),
+          checkFavorite() == true ?  IconButton(
+           icon: Icon(Icons.favorite, color: Colors.pink,),
+           onPressed: () async {
+             app.changeLoading();
+             print("All set loading");
+
+             bool value = await user.deleteFavorites(
+                 favoriteId: widget.product.id );
+             if (value) {
+               print("Item remove from favorite");
+               _key.currentState
+                   .showSnackBar(SnackBar(content: Text("Remove from Favorite!")));
+               user.getFavorites();
+               app.changeLoading();
+               return ;
+             } else {
+               print("Item NOT removed to Favorite");
+             }
+             print("lOADING SET TO FALSE");
+           },) : IconButton(
+            icon: Icon(Icons.favorite_border),
+            onPressed: () async {
+              app.changeLoading();
+              print("All set loading");
+
+              bool value = await user.addToFavorite(
+                  product: widget.product , userId: user.userModel.id);
+              if (value) {
+                print("Item added to favorite");
+                _key.currentState
+                    .showSnackBar(SnackBar(content: Text("Added ro Favorite!")));
+                user.getFavorites();
+                app.changeLoading();
+                return ;
+              } else {
+                print("Item NOT added to Favorite");
+              }
+              print("lOADING SET TO FALSE");
+            }) ,
           Container(
             margin: EdgeInsets.only(right: 2),
             child: Badge(
@@ -139,7 +170,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.product.price}đ',
+                      '${widget.product.price.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}đ',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -148,7 +179,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.product.old_price}đ',
+                      '${widget.product.old_price.replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}đ',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w300,
@@ -230,7 +261,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   if (value) {
                     print("Item added to cart");
                     _key.currentState
-                        .showSnackBar(SnackBar(content: Text("Added ro Cart!")));
+                        .showSnackBar(SnackBar(content: Text("Added ro Cart!"), duration: Duration(milliseconds: 1500),));
                     user.reloadUserModel();
                     app.changeLoading();
                     return;

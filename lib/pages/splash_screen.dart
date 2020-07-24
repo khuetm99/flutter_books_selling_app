@@ -16,7 +16,7 @@ class _SpashScreenPageState extends State<SpashScreenPage> {
         'Welcome In SplashScreen',
         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
       ),
-      seconds: 5,
+      seconds: 3,
       navigateAfterSeconds: HomePage(),
       image: new Image.asset(
           'images/splash/loading.gif'),

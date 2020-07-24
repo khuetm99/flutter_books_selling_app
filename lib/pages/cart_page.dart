@@ -90,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                                         fontSize: 19,
                                         fontWeight: FontWeight.bold)),
                                 TextSpan(
-                                    text: "${user.userModel.cart[index]["price"] }đ\n\n",
+                                    text: "${user.userModel.cart[index]["price"].toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') }đ\n\n",
                                     style: TextStyle(
                                         color: black,
                                         fontSize: 18,
@@ -156,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
                           fontSize: 22,
                           fontWeight: FontWeight.w400)),
                   TextSpan(
-                      text: " ${user.userModel.totalCartPrice }đ",
+                      text: " ${user.userModel.totalCartPrice.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') }đ",
                       style: TextStyle(
                           color: primary,
                           fontSize: 22,
