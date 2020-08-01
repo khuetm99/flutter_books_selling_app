@@ -37,13 +37,13 @@ class CategoryScreen extends StatelessWidget {
                     child: FadeInImage.memoryNetwork(
                       placeholder: kTransparentImage,
                       image: categoryModel.image,
-                      height: 160,
+                      height: 170,
                       fit: BoxFit.fill,
                       width: double.infinity,
                     ),
                   ),
                   Container(
-                    height: 160,
+                    height: 170,
                     decoration: BoxDecoration(
                       //                    borderRadius: BorderRadius.only(
                       //                      bottomLeft: Radius.circular(30),

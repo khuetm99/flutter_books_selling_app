@@ -22,6 +22,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     final app = Provider.of<AppProvider>(context);
     user.getFavorites();
     return Scaffold(
+        key: _key,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,

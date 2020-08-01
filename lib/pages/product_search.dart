@@ -1,7 +1,6 @@
 import 'package:flutterbooksellingapp/components/single_product.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
-import '../helpers/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/pages/product_detail.dart';
 import 'package:flutterbooksellingapp/provider/product.dart';

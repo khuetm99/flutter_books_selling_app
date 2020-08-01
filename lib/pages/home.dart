@@ -87,6 +87,8 @@ class _HomePageState extends State<HomePage> {
     final productProvider = Provider.of<ProductProvider>(context);
     int totalquantity = 0;
     totalquantity = user.userModel.totalQuantity;
+
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: white),
@@ -288,7 +290,35 @@ class _HomePageState extends State<HomePage> {
             ),
 
 //            ===================CAROSEL IMAGE===============
-            image_carousel,
+        Container(
+            height: 200.0,
+            child: Carousel(
+              boxFit: BoxFit.cover,
+              images: [
+                AssetImage('images/c1.jpg'),
+//          AssetImage('images/c3.jpg'),
+//          AssetImage('images/c4.jpg'),
+//          AssetImage('images/c5.jpg'),
+//          AssetImage('images/c6.jpeg'),
+//          AssetImage('images/c7.jpg'),
+                AssetImage('images/c8.jpg'),
+                AssetImage('images/c9.png'),
+                AssetImage('images/c11.png'),
+                AssetImage('images/c12.jpg'),
+                AssetImage('images/c13.jpg'),
+                AssetImage('images/c14.png'),
+                AssetImage('images/c15.jpg'),
+              ],
+              autoplay: true,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(milliseconds: 2000),
+              autoplayDuration:Duration(milliseconds: 4000) ,
+              dotSize: 2.0,
+              indicatorBgPadding: 6.0,
+              dotBgColor: Colors.transparent,
+            )),
+
+
             // padding widget
             new Padding(
               padding: const EdgeInsets.all(9.0),
@@ -347,36 +377,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget image_carousel = new Container(
-      height: 200.0,
-      child: Carousel(
-        boxFit: BoxFit.cover,
-        images: [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/c3.jpg'),
-          AssetImage('images/c4.jpg'),
-          AssetImage('images/c5.jpg'),
-          AssetImage('images/c6.jpeg'),
-          AssetImage('images/c7.jpg'),
-          AssetImage('images/c8.jpg'),
-          AssetImage('images/c9.png'),
-          AssetImage('images/c11.png'),
-          AssetImage('images/c12.jpg'),
-          AssetImage('images/c13.jpg'),
-          AssetImage('images/c14.png'),
-          AssetImage('images/c15.jpg'),
-        ],
-        autoplay: true,
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 2000),
-        autoplayDuration:Duration(milliseconds: 4000) ,
-        dotSize: 2.0,
-        indicatorBgPadding: 6.0,
-        dotBgColor: Colors.transparent,
-      ));
-
-
-
 
 //============================================NOTIFICATION FUNCTION==============================
   Widget _buildDialog(BuildContext context, Item item) {
@@ -398,7 +398,6 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-
 
 
   void _showItemDialog(Map<String, dynamic> message) {

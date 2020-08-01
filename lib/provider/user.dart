@@ -169,6 +169,7 @@ class UserProvider with ChangeNotifier {
     }
   }
 
+
   Future<bool> addToFavorite({Product product, String userId}) async {
     print("THE PRODUC IS: ${product.toString()}");
     try {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbooksellingapp/components/CustomShapeClipper.dart';
 import '../components/custom_text.dart';
-import '../helpers/screen_navigation.dart';
 import '../helpers/style.dart';
 import 'home.dart';
 
@@ -21,6 +20,9 @@ class IconImgs {
   static const String unlock = "images/assets/imgs/unlock.png";
   static const String secret = "images/assets/imgs/secret.png";
 }
+
+
+
 
 class PaymentButtonScreen extends StatelessWidget {
   Color firstColor = Color(0xFFF47D15);

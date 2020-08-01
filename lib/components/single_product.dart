@@ -262,100 +262,105 @@ class ProductWidget extends StatelessWidget {
 
 
 
+class Single_prod_Card extends StatelessWidget {
 
-//
-//class Single_prod_Pages extends StatelessWidget {
-//
-//  final Product bookObject;
-//
-//  Single_prod_Pages(
-//      {
-//      this.bookObject});
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Card(
-//      child: GestureDetector(
-//        onTap: () {
-//          Navigator.push(
-//              context,
-//              MaterialPageRoute(
-//                  builder: (context) =>
-//                      Details(product: bookObject)));
-//        },
-//        child: Container(
-//          padding: EdgeInsets.all(10),
-//          child: Row(
-//            children: <Widget>[
-//              Column(
-//                crossAxisAlignment: CrossAxisAlignment.start,
-//                children: <Widget>[
-//                  Container(
-//                    height: 210,
-//                    width: 150,
-//                    decoration: BoxDecoration(
-//                        borderRadius: BorderRadius.circular(5.0)),
-//                    child: ClipRRect(
-//                        borderRadius: BorderRadius.circular(5.0),
-//                        child: Image.asset(
-//                          bookObject.image,
-//                          fit: BoxFit.fill,
-//                        )),
-//                  ),
-//                  Padding(padding: EdgeInsets.all(5),),
-//                  Expanded(
-//                    child: Text(
-//                      bookObject.name,
-//                      style: TextStyle(
-//                          fontSize: 20,
-//                          color: Colors.black87,
-//                          fontWeight: FontWeight.w600),
-//                    ),
-//                  ),
-////                  SizedBox(
-////                    height: 7,
-////                  ),
-//                  Expanded(
-//                    child: Text(
-//                      bookObject.author,
-//                      style: TextStyle(
-//                        fontSize: 15,
-//                        color: Colors.black45,
-//                        fontWeight: FontWeight.w300,
-//                      ),
-//                      softWrap: true,
-//                    ),
-//                  ),
-////                  SizedBox(
-////                    height: 12,
-////                  ),
-//                  Expanded(
-//                    child: Text(bookObject.price + 'đ',
-//                        style: TextStyle(
-//                            fontSize: 15,
-//                            color: Colors.black,
-//                            fontWeight: FontWeight.w500)),
-//                  ),
-////                  SizedBox(
-////                    height: 12,
-////                  ),
-//                  Expanded(
-//                    child: Text(bookObject.old_price + 'đ',
-//                        style: TextStyle(
-//                            fontSize: 13,
-//                            color: Colors.black,
-//                            decoration: TextDecoration.lineThrough,
-//                            fontWeight: FontWeight.w300)),
-//                  ),
-//                ],
-//              ),
-////              SizedBox(
-////                width: 20,
-////              )
-//            ],
-//          ),
-//        ),
-//      ),
-//    );
-//  }
-//}
+  final Product bookObject;
+
+  Single_prod_Card(
+      {
+      this.bookObject});
+
+  @override
+  Widget build(BuildContext context) {
+    String title = bookObject.name.length > 14
+        ? bookObject.name.substring(0, 13) + "..."
+        : bookObject.name;
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ProductDetails(product: bookObject)));
+      },
+      child: Card(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    height: 250,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(child: Align(
+                              alignment: Alignment.center,
+                              child:  Shimmer.fromColors(
+                                highlightColor: Colors.white,
+                                baseColor: Colors.grey[300],
+                                child: ShimmerLayoutSingleProd(),
+                                period: Duration(milliseconds: 800),
+                              ),
+                            )),
+                            Image.network(
+                              bookObject.image,
+                              height: 250,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        )),
+                  ),
+                  Padding(padding: EdgeInsets.all(5),),
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      bookObject.author.length > 21 ?  bookObject.author.substring(0, 20) + "..." : bookObject.author,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black45,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      softWrap: true,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                        '${bookObject.price.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}đ',
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500)),
+                  ),
+                  Expanded(
+                    child: Text(bookObject.old_price.replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},') + 'đ',
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            decoration: TextDecoration.lineThrough,
+                            fontWeight: FontWeight.w300)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

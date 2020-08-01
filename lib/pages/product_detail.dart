@@ -7,10 +7,13 @@ import 'package:flutterbooksellingapp/components/loading.dart';
 import 'package:flutterbooksellingapp/helpers/screen_navigation.dart';
 import 'package:flutterbooksellingapp/helpers/style.dart';
 import 'package:flutterbooksellingapp/models/products.dart';
+import 'package:flutterbooksellingapp/pages/NXB_page.dart';
+import 'package:flutterbooksellingapp/pages/author_page.dart';
 import 'package:flutterbooksellingapp/pages/cart_page.dart';
 import 'package:flutterbooksellingapp/pages/home.dart';
 import 'package:flutterbooksellingapp/pages/popular_books.dart';
 import 'package:flutterbooksellingapp/provider/app.dart';
+import 'package:flutterbooksellingapp/provider/product.dart';
 import 'package:flutterbooksellingapp/provider/user.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +41,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     final app = Provider.of<AppProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
     user.getFavorites();
 
     bool checkFavorite() {
@@ -140,7 +144,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: Image.network(widget.product.image),
               ),
               footer: Container(
-                color: Colors.white54,
+                color: Colors.white38,
                 child: ListTile(
                   leading: new Text(
                     '',
@@ -399,14 +403,76 @@ class _ProductDetailsState extends State<ProductDetails> {
               )
             ],
           ),
-          Divider(),
+
+          SizedBox(height: 10,),
+//==================================XEM THÊM==================================
+
+           Row(
+             children: <Widget>[
+               Padding(
+                   padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
+                   child: Text(
+                     ' Xem thêm',
+                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                   )),
+             ],
+           ),
+           Divider(height: 8,thickness: 0.3,),
+
+           InkWell(
+             onTap: () async{
+               await productProvider.loadProductsByAuthor(author : widget.product.author);
+               changeScreen(context, authorPage(product : widget.product));
+             },
+             child: Row(
+               children: <Widget>[
+                 Padding(
+                     padding: EdgeInsets.fromLTRB(18, 5, 5, 5),
+                     child: Text(
+                       widget.product.author,
+                       style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+                     )),
+                 Spacer(),
+                 Padding(
+                   padding: const EdgeInsets.all(3.0),
+                   child: Icon(Icons.arrow_forward_ios, size: 23,),
+                 )
+               ],
+             ),
+           ),
+           Divider(height: 8,thickness: 0.3,),
+
+           InkWell(
+             onTap: () async{
+               await productProvider.loadProductsByNXB(nxb : widget.product.nxb);
+               changeScreen(context, nxbPage(product: widget.product,));
+             },
+             child: Row(
+               children: <Widget>[
+                 Padding(
+                     padding: EdgeInsets.fromLTRB(18, 5, 5, 5),
+                     child: Text(
+                       widget.product.nxb,
+                       style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+                     )),
+                 Spacer(),
+                 Padding(
+                   padding: const EdgeInsets.all(3.0),
+                   child: Icon(Icons.arrow_forward_ios, size: 23,),
+                 )
+               ],
+             ),
+           ),
+           Divider(height: 8,thickness: 0.3,),
+
 //        ===========Sản phẩm gợi ý ===========
+           SizedBox(height: 8,),
           Row(
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.fromLTRB(12, 5, 5, 5),
                   child: Text(
-                    ' Gợi ý sách ',
+                    ' Có thể bạn muốn mua ',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   )),
             ],

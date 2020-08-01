@@ -54,6 +54,32 @@ class ProductServices {
         return products;
       });
 
+  Future<List<Product>> getProductsOfNXB({String nxb}) async =>
+      _firestore
+          .collection(collection)
+          .where("nxb", isEqualTo: nxb)
+          .getDocuments()
+          .then((result) {
+        List<Product> products = [];
+        for (DocumentSnapshot product in result.documents) {
+          products.add(Product.fromSnapshot(product));
+        }
+        return products;
+      });
+
+  Future<List<Product>> getProductsOfAuThor({String author}) async =>
+      _firestore
+          .collection(collection)
+          .where("author", isEqualTo: author)
+          .getDocuments()
+          .then((result) {
+        List<Product> products = [];
+        for (DocumentSnapshot product in result.documents) {
+          products.add(Product.fromSnapshot(product));
+        }
+        return products;
+      });
+
   Future<List<Product>> searchProducts({String productName}) {
     // code to convert the first character to uppercase
     String searchKey = productName[0].toUpperCase() + productName.substring(1);
