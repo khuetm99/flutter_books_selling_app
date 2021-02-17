@@ -16,6 +16,9 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # Screenshot
+
+<img src="https://user-images.githubusercontent.com/45823921/89195901-a1f19000-d5d3-11ea-850b-e125ad3bfa5b.jpg" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+
 ![116123444_1884887144979105_2110500743573729219_n](https://user-images.githubusercontent.com/45823921/89195901-a1f19000-d5d3-11ea-850b-e125ad3bfa5b.jpg)
 ![116704742_1191791744513290_1656263157017598921_n](https://user-images.githubusercontent.com/45823921/89195815-7ff80d80-d5d3-11ea-897a-0665282a0e4f.jpg)
 ![116091372_754890495262169_3720330753221859292_n](https://user-images.githubusercontent.com/45823921/89196038-db2a0000-d5d3-11ea-8744-2e4b9bc1db6a.jpg)
